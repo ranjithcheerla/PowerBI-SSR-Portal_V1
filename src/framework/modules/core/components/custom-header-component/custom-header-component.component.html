@@ -1,0 +1,27 @@
+<ng-container *ngIf="isPopover && customAddOnHeaderComponent !== undefined">
+    <a href="javascript:;" class="nav-link" [ngClass]="{ active: popActions }" [popover]="customAddOn" placement="bottom"
+      container="body" containerClass="actions-popover" [outsideClick]="true" #popover="bs-popover"
+      (onShown)="togglePopup(true)" (onHidden)="togglePopup(false)">{{customAddOnHeaderText}}<span class="h-arrow"></span></a>
+  </ng-container>
+
+  <ng-container *ngIf="!isPopover" [ngTemplateOutlet]="customAddOn"></ng-container>
+  
+  <ng-template #customAddOn>
+    <button type="button" class="close close-btn" aria-label="Close" (click)="closePopoverOrMenu()" *ngIf="isPopover">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <ng-container [ngTemplateOutlet]="customAddOnHeaderTemplate"></ng-container>
+  </ng-template>
+  
+  <!-- action popover template starts -->
+  <ng-template #customAddOnHeaderTemplate>
+    <div>
+      <ul class="my-sm-4 my-3 actions-list">
+        <ng-container 
+        [ngComponentOutlet]="customAddOnHeaderComponent" [ndcDynamicInputs]="{defaults: customAddOnHeaderInput}"></ng-container>
+      </ul>
+    </div>
+  </ng-template>
+  <!-- action popover template ends-->
+  
+  

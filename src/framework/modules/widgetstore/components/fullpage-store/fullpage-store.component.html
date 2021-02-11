@@ -1,0 +1,98 @@
+<div class="row">
+  <div class="col-md-auto pr-md-0" id="categoryList">
+    <div class="aw-category card">
+      <div class="p-4">
+        <h5 class="font-weight-normal ws-title pb-1 mt-2">Categories</h5>
+        <div class="cf-search-group">
+          <i class="fas fa-search" aria-hidden="true" aria-hidden="true"></i>
+          <input type="text" class="form-control" #searchTerm (input)="searchWidgetStore(searchTerm.value)" placeholder="Search Apps">
+        </div>
+      </div>
+      <ul class="aw-category-list">
+        <li [class.active]="category === selectedCategory" (click)="selectCategory(category)"
+          *ngFor="let category of categories|keys">
+          <a>{{category}} <i class="fw-sprite icon-accordion" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md pl-md-0" id="dashboardSec">
+    <div class="card border-0 h-100">
+      <div class="card-body p-4">
+        <div class="pane">
+          <ng-container *ngIf="!showSearchedWidgets">
+            <!--CASE: individual category selected -->
+            <ng-container *ngIf="selectedCategory !== 'All'">
+              <div class="aw-list-group">
+                <h5 class="font-weight-normal mb-3 ws-title">{{selectedCategory}}</h5>
+                <div class="row">
+                  <div class="col-xl-auto col-lg-4 col-md-6 col-sm-6 aw-col mb-3"
+                    *ngFor="let widget of categories[selectedCategory]">
+                    <ng-container [ngTemplateOutlet]="widgetTmpl" [ngTemplateOutletContext]="{widget: widget}">
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <!--CASE: individual category selected -->
+
+            <!--CASE: All category selected -->
+            <ng-container *ngIf="selectedCategory === 'All'">
+              <div class="aw-list-group" *ngFor="let category of categories|keys|slice:1">
+                <h5 class="font-weight-normal mb-3 ws-title">{{category}}</h5>
+                <div class="row">
+                  <div class="col-xl-auto col-lg-4 col-md-6 col-sm-6 mb-3 aw-col"
+                    *ngFor="let widget of categories[$any(category)]">
+                    <ng-container [ngTemplateOutlet]="widgetTmpl" [ngTemplateOutletContext]="{widget: widget}">
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <!--CASE: All category selected -->
+          </ng-container>
+
+          <!--CASE: Search Results -->
+          <div class="aw-list-group" *ngIf="showSearchedWidgets">
+            <h5 class="font-weight-normal mb-4">Search results for "{{searchTerm.value}}"</h5>
+            <div class="row" *ngIf="searchResults.length; else noresults">
+              <div class="col-xl-auto col-lg-4 col-md-6 col-sm-6 mb-3 aw-col" *ngFor="let widget of searchResults">
+                <ng-container [ngTemplateOutlet]="widgetTmpl" [ngTemplateOutletContext]="{widget: widget}">
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <!--CASE: Search Results -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #widgetTmpl let-item="widget">
+  <div class="card mb-2 h-100">
+    <div class="card-header">
+      <i class="ws-sprite icon-{{item.widgetKey}}"></i>
+    </div>
+    <div class="card-body">
+      <h6 class="card-title mb-1">{{item.widgetName}}</h6>
+      <div>Lorem ipsum dolor sit amet, probatus mediocrem.</div>
+    </div>
+    <div class="card-footer text-center"
+      [ngClass]="{'m-0': !selectedWidgets[item.widgetKey], 'mt-05': selectedWidgets[item.widgetKey]}">
+      <span *ngIf="(item.added || selectedWidgets[item.widgetKey]) && !item.isWidMultiple" class="aw-txt-added">
+        <i class="fas fa-check" aria-hidden="true"></i> Added</span>
+      <div *ngIf="(!item.added && !selectedWidgets[item.widgetKey]) || (item.isWidMultiple)" (click)="addWidget(item)">
+        <a href="javascript:;">Add</a>
+      </div>
+      <span *ngIf="(item.isWidMultiple && selectedWidgets[item.widgetKey])" class="aw-txt-added">
+        <i class="fas fa-check" aria-hidden="true"></i> Added {{selectedWidgets[item.widgetKey]}} time(s)
+      </span>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #noresults>
+  No widgets Found
+</ng-template>

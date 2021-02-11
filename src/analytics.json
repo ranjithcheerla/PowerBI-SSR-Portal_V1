@@ -1,0 +1,68 @@
+{
+  "appInsights": {
+    "local": {
+      "key": "LOCAL-APPINSIGHTS",
+      "value": "#{LOCAL-APPINSIGHTS}#"
+    },
+    "dev": {
+      "key": "DEV-APPINSIGHTS",
+      "value": "#{DEV-APPINSIGHTS}#"
+    },
+    "dev1": {
+      "key": "DEV-APPINSIGHTS",
+      "value": "#{DEV-APPINSIGHTS}#"
+    },
+    "dev2": {
+      "key": "DEV-APPINSIGHTS",
+      "value": "#{DEV-APPINSIGHTS}#"
+    },
+    "dev3": {
+      "key": "DEV-APPINSIGHTS",
+      "value": "#{DEV-APPINSIGHTS}#"
+    },
+    "devx": {
+      "key": "DEVX-APPINSIGHTS",
+      "value": "#{DEVX-APPINSIGHTS}#"
+    },
+    "qa": {
+      "key": "QA-APPINSIGHTS",
+      "value": "#{QA-APPINSIGHTS}#"
+    },
+    "qa1": {
+      "key": "QA-APPINSIGHTS",
+      "value": "#{QA-APPINSIGHTS}#"
+    },
+    "qa2": {
+      "key": "QA-APPINSIGHTS",
+      "value": "#{QA-APPINSIGHTS}#"
+    },
+    "qax": {
+      "key": "QAX-APPINSIGHTS",
+      "value": "#{QAX-APPINSIGHTS}#"
+    },
+    "uat": {
+      "key": "QA-APPINSIGHTS",
+      "value": "#{QA-APPINSIGHTS}#"
+    },
+    "uatx": {
+      "key": "QAX-APPINSIGHTS",
+      "value": "#{QAX-APPINSIGHTS}#"
+    },
+    "prod": {
+      "key": "PROD-APPINSIGHTS",
+      "value": "#{PROD-APPINSIGHTS}#"
+    },
+    "prod1": {
+      "key": "PROD-APPINSIGHTS",
+      "value": "#{PROD-APPINSIGHTS}#"
+    },
+    "prod2": {
+      "key": "PROD-APPINSIGHTS",
+      "value": "#{PROD-APPINSIGHTS}#"
+    },
+    "prodx": {
+      "key": "PRODX-APPINSIGHTS",
+      "value": "#{PRODX-APPINSIGHTS}#"
+    }
+  }
+}

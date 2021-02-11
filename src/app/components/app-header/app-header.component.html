@@ -1,0 +1,72 @@
+<div class="top-subheader d-flex justify-content-end justify-content-md-between align-items-center container">
+    <ul class="d-flex align-items-center flex-wrap tsubheader-left">
+        <li class="d-none d-md-block">
+                <div class="custom-control custom-switch cf-switch">
+                        <input type="checkbox" class="custom-control-input" checked (click)="validateCheckEntry()" id="customSwitch1" >
+                        <label class="custom-control-label pl-2" for="customSwitch1">
+                           Check Entry : 
+                           <span *ngIf="toggleCheckEntry"> ON</span>
+                           <span *ngIf="!toggleCheckEntry">OFF</span>
+                        </label>
+                    </div>
+        </li>
+        <li *ngIf="toggleCheckEntry" class="pl-0">
+            <div class="position-relative pl-3" dropdown placement="bottom left" [insideClick]="true">
+                <a dropdownToggle class="d-flex justify-content-between" href="javascript:;">
+                    <span>
+                        <i class="fas fa-exclamation-circle mr-2" aria-hidden="true"></i>
+                        <span class="mr-1">9</span>
+                        Errors
+                    </span>
+                    <i class="fas fa-angle-down ml-3 mt-1" aria-hidden="true"></i>
+                </a>
+                <div *dropdownMenu class="dropdown-menu check-entry-dd">
+                    <ul>
+                        <ng-container *ngFor="let list of checkEntry; let i = index;">
+                            <li class="checkentry-list" [ngClass]="{'active':list.isOpen}" [class.list-opened]="list.hasChild && list.activeChild">
+                                <a class="d-flex justify-content-between" href="javascript:;"
+                                    (click)="checkEntryToggle(list, i)">
+                                    <span class="d-flex">
+                                        <i *ngIf="!list.activeChild"
+                                            class="fas fa-exclamation-circle mr-2" aria-hidden="true"></i>
+                                        <i *ngIf="list.hasChild && list.activeChild" class="fas fa-angle-left mr-2 text-md icon-links" aria-hidden="true"></i>
+                                        {{list.title}}
+                                    </span>
+                                    <i *ngIf="list.hasChild && !list.activeChild" class="fas fa-angle-right icon-links ml-3 mt-1" aria-hidden="true"></i>
+                                </a>                              
+                                <ul *ngIf="list.hasChild" class="pl-3 child-lists">
+                                    <li *ngFor="let childList of list.child">
+                                        <a href="javascript:;" class="d-flex">
+                                            <i class="fas fa-exclamation-circle mr-2" aria-hidden="true"></i>
+                                            {{childList}}</a>
+                                    </li>
+                                </ul>                                
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="tsubheader-right d-flex align-items-center">
+        <a href="javascript:;" class="d-none d-md-block"><i class="fas fa-print" aria-hidden="true"></i></a>
+        <button class="btn btn-outline-primary cf-btn text-uppercase btn-xs">EXIT</button>
+        <button class="btn btn-primary cf-btn text-uppercase btn-xs" (click)="openerrormodal(templateerror)">SAVE</button>
+    </div>
+</div>
+
+
+<ng-template #templateerror>
+        <div class="modal-body">
+            <div class="text-center">
+                <div class="modal-icon"><i class="fas fa-exclamation-circle error-color" aria-hidden="true"></i></div>
+                <div class="h3">Exit</div>
+                <div>Would you like to save changes <br>before exiting?</div>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-center error-popoup mt-2">
+            <button type="button" class="btn btn-outline-primary btn-xs cf-btn  mt-2  mr-2"
+                (click)="modalRef.hide()">No</button>
+            <button type="button" class="btn btn-primary btn-xs cf-btn  mt-2" (click)="modalRef.hide()">Yes</button>
+        </div>
+    </ng-template>

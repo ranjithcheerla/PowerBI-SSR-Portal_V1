@@ -1,0 +1,35 @@
+<ng-container *ngIf="pageConfig">
+  <div class="row flexbox-container" cdkDropListGroup>
+    <!-- Page banner -->
+    <div *ngIf="pageConfig.banner" class="pageBanner col-12">
+      <ng-container [ngComponentOutlet]="pageConfig.banner"></ng-container>
+    </div>
+    <!-- widgets to be rendered -->
+    <div cdkDropList class="{{pageConfig.panelConfig[panel].css}} {{panel}} widget-panel"
+      *ngFor="let panel of pageConfig.panels" [cdkDropListData]="pageConfig.panelConfig[panel].widgets"
+      (cdkDropListDropped)="drop($event)" (cdkDropListEntered)="dropItemEntered($event)">
+
+      <!-- <app-empty-container *ngIf="pageConfig.panelConfig[panel].widgets.length === 0"></app-empty-container> -->
+      <ng-container *ngIf="showEmptyContainer">
+        <app-empty-container *ngIf="pageConfig.panelConfig[panel].widgets.length === 0"></app-empty-container>
+      </ng-container>
+      <app-widget cdkDrag [cdkDragDisabled]="isDragDisabled(panel)" [attr.data-widgetId]="widget" [isDraggable]="!isDragDisabled(panel)"
+        *ngFor="let widget of pageConfig.panelConfig[panel].widgets" [activeTab]="currentTab" [compName]="widget"
+        [panel]="panel" [reset]="resetpage" (widgetLoadingDone)="widgetRendered($event)">
+        <div class="drag-placeholder" *cdkDragPlaceholder></div>
+        <div *cdkDragPreview class="drag-preview p-3">
+          <div class="drag-preview-heading d-flex align-items-center andes">
+            <div><i class="icon-{{widget}} ws-sprite mr-3"></i></div>
+            <div>{{getWidgetName(widget)}}</div>
+          </div>
+        </div>
+      </app-widget>
+    </div>
+
+    <!-- Page footer banner -->
+    <div *ngIf="pageConfig.footerBanner" class="pageBanner col-12">
+      <ng-container [ngComponentOutlet]="pageConfig.footerBanner"></ng-container>
+    </div>
+
+  </div>
+</ng-container>

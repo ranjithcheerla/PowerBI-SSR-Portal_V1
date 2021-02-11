@@ -1,0 +1,21 @@
+/* Overrides bootstrap styles to match with the framework theme */
+.container{
+    max-width: $containerWidth;
+    // transition:all ease 350ms;
+}
+
+
+
+.dropdown-item{
+    cursor: pointer;
+    &:active{
+        background: transparent;
+    }
+}
+.btn-default{
+    &:hover {
+        background: #fff;
+        border: 1px solid #d4d9dd;
+        color: #908f8f;
+    }
+}

@@ -1,0 +1,84 @@
+<section class="search-bg-img search-banner-bg">
+    <div class="container wrapper">
+        <div class="row">
+            <div class="col-xl-8 col-lg-6">
+                <h1 class="mb-2 andesbold text-white">Explore Data</h1>
+                <div class="search-description mb-4">Find datasets on project co-financing amounts, commitments and
+                    cumulative expenses</div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <ng-select class="da-ng-select da-home-search ng-select da-searchable" [items]="searchdata"
+                            bindLabel="name" bindValue="name" [(ngModel)]="selectedItem" appendTo="body"
+                            [clearable]="true" placeholder="Ask a question about your data">
+                            <ng-template ng-header-tmp>
+                                To get started choose one of the following suggestions
+                            </ng-template>
+                            <ng-template ng-label-tmp let-item="item">
+                                {{item.name}}
+                            </ng-template>
+                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                <em class="fal fa-question-circle colorblack-40 text-lg mr-2"></em>
+                                {{item.name}}
+                            </ng-template>
+                            <ng-container *ngIf="searchdataArraylength>searchdataDisplayCount">
+                                <ng-template ng-footer-tmp>
+                                    <a href="javascript:;" *ngIf="!searchDisplayAll" (click)="searchToggle(true)">Show
+                                        all suggestions</a>
+                                    <a href="javascript:;" *ngIf="searchDisplayAll" (click)="searchToggle(false)">Show
+                                        less suggestions</a>
+                                </ng-template>
+                            </ng-container>
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="text-md d-flex flex-wrap align-items-center pt-3 pt-md-4 browseby-link">
+                    <div class="q-links font-weight-bold mr-2 mb-2 mb-md-0 d-flex align-items-center"
+                        (click)="showmorebrowseby()">
+                        <i class="fas fa-plus mr-2 d-md-none d-block" *ngIf="showbrowseby"></i>
+                        <i class="fas fa-minus mr-2 d-md-none d-block" *ngIf="!showbrowseby"></i>Browse By
+                    </div>
+                    <div [@slideInOut]="showbrowseby">
+                        <ul class="d-flex flex-wrap align-items-center mb-md-0 mb-3">
+                            <!-- <li><a href="javascript:;">My Reports</a></li> -->
+                            <li><a href="javascript:;" routerLink="/my-favorite">My Reports</a></li>
+                            <li><a href="javascript:;">My VPU</a></li>
+                            <li><a href="javascript:;">Bank Wide</a></li>
+                            <li><a href="javascript:;">Operations</a></li>
+                            <li><a href="javascript:;">Finance</a></li>
+                            <li><a href="javascript:;">Corporate and Administrative</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3">
+                <div class="search-quicklinks pt-0 pt-md-4">
+                    <div class="q-links andesbold d-flex align-items-center" (click)="showmorequick()">
+                        <i class="fas fa-plus mr-2 d-md-none d-block" *ngIf="showquicklink"></i>
+                        <i class="fas fa-minus mr-2 d-md-none d-block" *ngIf="!showquicklink"></i>Quick Links
+                    </div>
+                    <div [@slideInOut]="showquicklink">
+                        <ul class="quick-links mt-2">
+                            <li><a href="/standard-reports">Standard Report</a></li>
+                            <li>
+                                <a href="javascript:;">Help</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3">
+                <div class="pt-3 pt-md-4">
+                    <div class="text-lg white-75">
+                        Build a report using fetched data
+                    </div>
+                    <div class="dataset-btn mt-3">
+                        <!-- <button class="btn create-btn btn-primary btn-xs text-uppercase" (click)="newDataset()">
+                            <i class="fas fa-plus mr-2"></i> Create Report</button> -->
+                        <a routerLink="/create-report" class="btn create-btn btn-primary btn-xs text-uppercase">
+                            <i class="fas fa-plus mr-2"></i> Create Report</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

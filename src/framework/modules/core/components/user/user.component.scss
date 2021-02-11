@@ -1,0 +1,12 @@
+@import "~framework/assets/css/sassimport.scss";
+.userpic {
+    @include circle-pic(32px);
+    img {
+      @include circle-pic-img;
+    }
+    &.md {
+      @include circle-pic(48px);
+    }
+  }
+
+  

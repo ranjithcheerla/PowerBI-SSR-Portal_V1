@@ -1,0 +1,136 @@
+<div class="leftnav-backdrop" [ngClass]="{ 'active': lhsActive }"
+  (click)="lhsActive=!lhsActive; leftNavMenuToggle(lhsActive)"></div>
+<div class="position-relative leftnav-wrapper" [ngStyle]="{height:lhsOverlayMenuHeight}" [ngClass]="{ 'active': lhsActive, 'lhs-dd-menu':lhsOverlayMenu,'h-100':!lhsOverlayMenu}">
+  <div class="left-nav {{ leftMenuTheme }}" [ngClass]="{ 'lhs-active': lhsActive }">
+    <div class="mobile-app-bar">
+      <div class="d-flex justify-content-between">
+        <div>
+          <a href="javascript:;" class="mobile-app-hamburger"
+            (click)="lhsActive=!lhsActive; leftNavMenuToggle(lhsActive)">
+            <span>
+            </span>
+          </a>
+        </div>
+        <div>
+          <a href="javascript:;" class="mobile-dot-nav-menu d-flex align-items-center justify-content-center"
+            (click)="launcher = !launcher">
+            <div class="mdot-cirlce"></div>
+            <div class="mdot-cirlce"></div>
+            <div class="mdot-cirlce"></div>
+          </a>
+          <app-globalnav [launcher]="launcher" (globalNavStatus)="setGlobalNavStatus($event)"></app-globalnav>
+        </div>
+      </div>
+    </div>
+    <div class="lhs-menu">
+      <div class="menu-layer sub-active">
+
+        <ul class="parentlevel">
+          <li class="back-arrow-link" *ngIf="backLink && backLink.text && backLink.route">
+            <a [routerLink]="backLink.route">
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>
+              <span class="hide-on-collapse">{{backLink.text}}</span>
+            </a>
+          </li>
+        </ul>
+        <!-- Menu items will display here -->
+        <ng-container *ngTemplateOutlet="
+              recursiveList;
+              context: { list: leftNav, parent: [] }
+            "></ng-container>
+        <ul class="parentlevel">
+          <!-- reorder menu items -->
+          <li *ngIf="canLeftNavReorder" (click)="navigateToReOrderPage()">
+            <div class="reorder-menu" tooltip="Organize menus" [adaptivePosition]="false" placement="right"
+              container="body">
+              <i class="fas fa-ellipsis-h" aria-hidden="true"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="lhs-arrow-wrapper" (click)="lhsActive=!lhsActive; leftNavMenuToggle(lhsActive)">
+      <a href="javascript:;" class="lhs-toggle-arrow" [ngClass]="{ 'active': !lhsActive }">
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<ng-template #anchorText let-nav="nav">
+  <i *ngIf="
+      !nav.settings ||
+      nav.settings.collapsed ||
+      nav.settings.leftNavType === 'expand'
+    " class="prefix-icon {{nav.prefixIconClass}}" [ngClass]="{ 'far fa-dot-circle': !nav.prefixIconClass }" tooltip="{{ nav.text }}" [adaptivePosition]="false"
+    placement="right" container="body" aria-hidden="true"></i>
+
+  <div [class.d-xl-none]="lhsOverlayMenu" *ngIf="nav.settings && !nav.settings.collapsed && nav.settings.leftNavType === 'drilldown'">
+    <i class="arrow-line" aria-hidden="true"></i>
+  </div>
+  <span
+    [ngClass]="{'text-truncate': nav.settings && !nav.settings.collapsed && nav.settings.leftNavType === 'drilldown'}">{{ nav.text }}</span>
+  <i [class.d-xl-none]="lhsOverlayMenu" class="icon-mobile-horizontal" *ngIf="nav.settings && nav.settings.leftNavType === 'drilldown'"
+    aria-hidden="true">...</i>
+  <div *ngIf="nav.settings && nav.settings.leftNavType === 'expand'">
+    <i class="fcustom arrow-line" aria-hidden="true"></i>
+  </div>
+  <i ngClass="suffix-icon {{nav.suffixIconClass}}" *ngIf="nav.suffixIconClass" aria-hidden="true"></i>
+</ng-template>
+
+<ng-template #recursiveList let-list="list" let-parent="parent">
+  <ul>
+    <ng-container *ngFor="let nav of list">
+      <!-- If external link -->
+      <li [attr.data-key]="nav.key" [hidden]="!nav.active" *ngIf="nav.external">
+        <a [href]="nav.external.url" [target]="nav.external.target">
+          <ng-container *ngTemplateOutlet="anchorText; context: { nav: nav }"></ng-container>
+        </a>
+      </li>
+      <!-- If not external link -->
+
+      <!-- <li> to handle blink animation (available only for blinkMenu is set to true) -->
+        <li (mouseout)="flyOutSubMenuClose($event)" *ngIf="!nav.external && nav.blinkMenu" [routerLinkActive]="" [@blinkAnimation]="nav.blinkMenu && nav.active ? 'show' : 'hide'"
+          [ngClass]="{'blink': nav.blinkMenu && nav.active, 'active': rla.isActive && !nav.settings, 'parentMenu': isParentActive(nav) }" #rla="routerLinkActive"
+          [appFindActiveItem]="rla.isActive && !nav.settings  ? nav : null" (activeItem)="activeItemOnLoad($event)">
+          <a (mouseenter)="flyOutSubMenuOpen($event)" [routerLink]="nav.settings && !nav.settings.loadPage ? [] : nav.route" [queryParams]="nav?.queryParams"
+            [ngClass]="{
+                          'has-submenu': nav.settings,
+                          flipit: nav.settings && nav.settings.leftNavType === 'drilldown',
+                          active: nav.settings ? !nav.settings.collapsed : false,
+                          'add-menu-separator': nav?.separator,
+                          'hide-child-menu':nav.settings && nav.settings.leftNavType === 'drilldown' && lhsOverlayMenu
+                        }" (click)="toggleMenu(nav)">
+            <ng-container *ngTemplateOutlet="anchorText; context: { nav: nav }"></ng-container>
+          </a>
+          <ul class="submenu" *ngIf="nav.settings">
+            <ng-container *ngTemplateOutlet="
+                            recursiveList;
+                            context: { list: nav.children, parent: [] }
+                          "></ng-container>
+          </ul>
+        </li>
+
+      <li (mouseout)="flyOutSubMenuClose($event)" [attr.data-key]="nav.key" [hidden]="!nav.active" [routerLinkActive]="" *ngIf="!nav.external && !nav.blinkMenu"
+        [ngClass]="{'active': rla.isActive && !nav.settings, 'blink': nav.blinkMenu, 'parent-active': isParentActive(nav) }" #rla="routerLinkActive"
+        [appFindActiveItem]="rla.isActive && !nav.settings ? nav : null" (activeItem)="activeItemOnLoad($event)">
+        <a (mouseenter)="flyOutSubMenuOpen($event)" [routerLink]="nav.settings && !nav.settings.loadPage ? [] : nav.route" [queryParams]="nav?.queryParams"
+          [ngClass]="{
+          'has-submenu has-child-menu': nav.settings,
+          flipit: nav.settings && nav.settings.leftNavType === 'drilldown',
+          active: nav.settings ? !nav.settings.collapsed : false,
+          'add-menu-separator': nav?.separator,
+          'hide-child-menu':nav.settings && nav.settings.leftNavType === 'drilldown' && lhsOverlayMenu
+        }" (click)="toggleMenu(nav)">
+          <ng-container *ngTemplateOutlet="anchorText; context: { nav: nav }"></ng-container>
+        </a>
+        <ul class="submenu" *ngIf="nav.settings">
+          <ng-container *ngTemplateOutlet="
+            recursiveList;
+            context: { list: nav.children, parent: [] }
+          "></ng-container>
+        </ul>
+      </li>
+    </ng-container>
+  </ul>
+</ng-template>

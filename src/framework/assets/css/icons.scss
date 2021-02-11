@@ -1,0 +1,107 @@
+.wb-logo {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 8px;
+}
+
+/* Sprite Declaration */
+.fw-sprite {
+  background: url('../images/fw-sprite.png');
+  display: inline-block;
+
+  &.fw-icon-green-tick {
+    background-position: -155px -7px;
+    height: 16px;
+    width: 16px;
+  }
+  &.fw-icon-page-notfound {
+    background-position: -5px -4px;
+    height: 52px;
+    width: 58px;
+  }
+
+  &.fw-icon-maximize {
+    width: 15px;
+    height: 17px;
+    background-position: -69px -5px;
+  }
+  &.fw-icon-minimize {
+    width: 15px;
+    height: 17px;
+    background-position: -90px -5px;
+  }
+  &.icon-error-warn {
+    background-position: -192px -132px;
+    width: 21px;
+    height: 18px;
+    margin-top: 2px;
+  }
+  &.icon-onespace {
+    background-position: -5px -67px;
+    width: 19px;
+    height: 18px;
+  }
+  &.icon-approval {
+    background-position: -66px -64px;
+    width: 24px;
+    height: 24px;
+  }
+  &.icon-lars {
+    background-position: -100px -65px;
+    width: 24px;
+    height: 24px;
+  }
+  &.icon-onedrive {
+    background-position: -134px -68px;
+    width: 24px;
+    height: 15px;
+  }
+  &.icon-riskindicator {
+    background-position: -168px -64px;
+    width: 19px;
+    height: 24px;
+  }
+  &.icon-wbdocs {
+    background-position: -197px -67px;
+    width: 24px;
+    height: 19px;
+  }
+  &.icon-trs {
+    background-position: -231px -64px;
+    width: 23px;
+    height: 24px;
+  }
+  &.icon-jabber {
+    background-position: -264px -66px;
+    width: 22px;
+    height: 20px;
+  }
+  &.icon-webex {
+    background-position: -297px -64px;
+    width: 24px;
+    height: 25px;
+  }
+  &.icon-pdf {
+    background-position: -331px -64px;
+    width: 24px;
+    height: 24px;
+  }
+  &.icon-wb {
+    background-position: -34px -66px;
+    width: 22px;
+    height: 22px;
+  }
+}
+
+
+.img-access-denied{
+  width: 205px;
+  height: 107px;
+  background:url(../images/access-denied.svg) no-repeat;
+  background-position: center;
+  margin: auto;
+  background-size: cover;
+}

@@ -1,0 +1,166 @@
+<!-- <div class="row">
+  <div class="col-12">
+    <div class="d-flex justify-content-between">
+      <h2 class="andes fw-sbold mb-4">My Reports</h2>
+      <div class="d-flex align-items-center mb-3 pb-1">
+        <button class="btn lp-btn report-btn btn-primary btn-lg text-uppercase d-flex align-items-center"
+          (click)="openCreateReport()">
+          <i class="report-sprite icon-plus-white mr-2"></i> Create Report</button>
+      </div>
+    </div>
+    <div class="card pt-2 px-3">
+      <tabset #staticTabs class="lp-tab-container lp-hscrollable">
+        <tab heading="Templates">
+          <app-my-favorite-reports workspace="myfav"></app-my-favorite-reports>
+        </tab>
+
+      </tabset>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #gridToolbar>
+  <div class="d-flex justify-content-end view-toolbar">
+    <ul class="grid-toolbar d-flex align-items-center">
+      <li>
+        <input placeholder="Search..." class="gt-searchbox" type="text" [(ngModel)]="searchTerm"
+          (ngModelChange)="doserach($event)" #inpSrcKwd />
+        <a class="report-sprite icon-search-dark" href="javascript:;" tooltip="Search" (click)="inpSrcKwd.focus();"
+          placement="bottom">
+        </a>
+      </li>
+    </ul>
+  </div>
+</ng-template> -->
+
+
+<section class="white-bg">
+  <div class="container wrapper">
+    <tabset #staticTabs class="lp-tab-container lp-tab-white lp-hscrollable">
+      <tab heading="All">
+        <div class="d-flex justify-content-between">
+          <h3 class="andes fw-sbold mb-3 pb-1">My Reports</h3>
+          <div class="view-tool">
+            <a href="javascript:;" (click)="mode = 'list'" class="mr-3" [ngClass]="{'active' : mode == 'list'}"><i
+                class="fal fa-th-list"></i></a>
+            <a href="javascript:;" (click)="mode = 'card'" [ngClass]="{'active' : mode == 'card' }"><i
+                class="fal fa-th-large"></i></a>
+          </div>
+        </div>
+        <ng-container [ngSwitch]="mode">
+          <ng-container *ngSwitchCase="'list'">
+            <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="rowData"
+              [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [sideBar]="true" [getRowHeight]="getRowHeight"
+              [headerHeight]="headerHeight">
+            </ag-grid-angular>
+          </ng-container>
+          <ng-container *ngSwitchCase="'card'">
+            <div class="d-flex flex-wrap card-row meeting-card">
+              <div class="report-card card h-100 mr-4 mb-4" *ngFor="let item of cardData">
+                <div class="card-body p3">
+                  <h5 class="fw-sbold mb-3">
+                    <a routerLink="/data-analytics/view-report">{{item.name}}</a>
+                  </h5>
+                  <ul class="d-flex flex-wrap text-md mb-4 pb-3">
+                    <li class="d-flex">
+                      <span class="colorblack-60 mr-1">Business Line:</span>
+                      <span class="fw-sbold">{{item.bline}},</span>
+                    </li>
+                    <li class="d-flex">
+                      <span class="colorblack-60 mr-1">Business Area:</span>
+                      <span class="fw-sbold">{{item.barea}},</span>
+                    </li>
+                  </ul>
+                  <ul class="d-flex flex-wrap text-sm">
+                    <li class="d-flex">
+                      <span class="colorblack-60 mr-1">Create On:</span>
+                      <span class="fw-sbold"> {{item.createdate}}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="card-footer d-flex justify-content-end">
+                  <ul class="d-flex">
+                    <li>
+                      <a href="javacript:;"><i class="fal fa-share-alt"></i></a>
+                    </li>
+                    <li>
+                      <a href="javacript:;"><i class="fal fa-heart"></i></a>
+                    </li>
+                    <li>
+                      <a href="javacript:;"><i class="far fa-ellipsis-h"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+
+      </tab>
+      <tab heading="Favorites">
+        <app-my-favorite-reports workspace="myfav"></app-my-favorite-reports>
+        <!-- <div class="d-flex justify-content-between">
+          <h3 class="andes fw-sbold mb-3 pb-1">Favorites</h3>
+          <div class="view-tool">
+            <a href="javascript:;" (click)="favmode = 'list'" class="mr-3" [ngClass]="{'active' : favmode == 'list'}"><i
+                class="fal fa-th-list"></i></a>
+            <a href="javascript:;" (click)="favmode = 'card'" [ngClass]="{'active' : favmode == 'card' }"><i
+                class="fal fa-th-large"></i></a>
+          </div>
+        </div>
+        <ng-container [ngSwitch]="favmode">
+          <ng-container *ngSwitchCase="'list'">
+            <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="rowData"
+              [columnDefs]="columnDefs" [defaultColDef]="defaultColDef" [sideBar]="true" [getRowHeight]="getRowHeight"
+              [headerHeight]="headerHeight">
+            </ag-grid-angular>
+          </ng-container>
+          <ng-container *ngSwitchCase="'card'">
+            <div class="d-flex flex-wrap">
+              <div class="report-card" *ngFor="let item of cardData">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h5 class="fw-sbold mb-3">
+                      <a href="javascript:;">{{item.name}}</a>
+                    </h5>
+                    <ul class="d-flex flex-wrap text-md mb-4 pb-3">
+                      <li class="d-flex">
+                        <span class="colorblack-60 mr-1">Business Line:</span>
+                        <span class="fw-sbold">{{item.bline}},</span>
+                      </li>
+                      <li class="d-flex">
+                        <span class="colorblack-60 mr-1">Business Area:</span>
+                        <span class="fw-sbold">{{item.barea}},</span>
+                      </li>
+                    </ul>
+                    <ul class="d-flex flex-wrap text-sm">
+                      <li class="d-flex">
+                        <span class="colorblack-60 mr-1">Create On:</span>
+                        <span class="fw-sbold"> {{item.createdate}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-footer d-flex justify-content-end">
+                    <ul class="d-flex">
+                      <li>
+                        <a href="javacript:;"><i class="fal fa-share-alt"></i></a>
+                      </li>
+                      <li>
+                        <a href="javacript:;"><i class="fal fa-heart"></i></a>
+                      </li>
+                      <li>
+                        <a href="javacript:;"><i class="far fa-ellipsis-h"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container> -->
+      </tab>
+    </tabset>
+  </div>
+</section>

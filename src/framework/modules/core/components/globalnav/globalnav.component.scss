@@ -1,0 +1,233 @@
+@import '~framework/assets/css/sassimport.scss';
+
+.dot-nav-menu {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-top: -1px;
+  &.active {
+    position: relative;
+    z-index: 5;
+  }
+}
+
+.dot-nav-menu {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-top: -1px;
+  .global-hamburger {
+    width: 3px;
+    height: 3px;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    &:before,
+    &:after {
+      width: 3px;
+      height: 3px;
+      display: inline-block;
+      border-radius: 50%;
+      content: '';
+      position: absolute;
+      left: -6px;
+    }
+    &:after {
+      left: auto;
+      right: -6px;
+    }
+    + .global-hamburger {
+      margin-top: 3px;
+    }
+  }
+  &.active {
+    position: relative;
+    z-index: 5;
+  }
+}
+
+.apps-module-nav {
+  position: absolute;
+  width: 342px;
+  visibility: visible;
+  pointer-events: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  box-shadow: 2px 2px 17px 0 rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.87);
+  z-index: 3;
+  font-size: 14px;
+  .dot-nav-menu {
+    margin-top: 3px;
+    margin-bottom: 2px;
+  }
+  .global-hamburger {
+    background: rgba(0, 0, 0, 0.6);
+    &::before,
+    &::after {
+      background: rgba(0, 0, 0, 0.6);
+    }
+  }
+  a {
+    color: #0071bc;
+  }
+  .fa-chevron-right {
+    font-size: 12px;
+  }
+  .appstoplauncher {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+  .appsmainlauncher {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 170px);
+    .launcher-title {
+      font-size: 18px;
+    }
+  }
+  .applist-back {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .logo-group {
+    font-size: 12px;
+  }
+  .app-searchbox {
+    > .fa-search {
+      position: absolute;
+      left: 10px;
+      top: 14px;
+      transform: rotate(90deg);
+      color: rgba(0, 0, 0, 0.87);
+    }
+
+    input.form-control {
+      border: 1px solid rgba(255, 255, 255, 0);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+      align-items: flex-start;
+      padding-left: 28px;
+      font-size: 14px;
+      height: 42px;
+    }
+    &:hover input.form-control {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  .all-apps-list {
+    background-color: #fff;
+    margin-left: -8px;
+    > li {
+      padding: 0px;
+      margin-bottom: 5px;
+      border: 1px solid transparent;
+      a {
+        color: rgba(0, 0, 0, 0.87);
+        padding: 10px 8px;
+        font-size: 14px;
+      }
+      .app-list-dd {
+        display: none;
+        .btn.dropdown-toggle {
+          background: #fff;
+          border: 0;
+          color: rgba(0, 0, 0, 0.6);
+          font-size: 12px;
+          outline: none;
+          border-radius: 0;
+          padding: 6px 10px;
+          height: 100%;
+          &:after {
+            display: none;
+          }
+          &:hover {
+            background-color: #e1dfdd;
+          }
+        }
+        .dropdown-menu {
+          border: 1px solid #f4f4f4;
+          border-radius: 2px;
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+          right: 0 !important;
+          left: auto !important;
+          li a {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.87);
+            padding: 6px 16px;
+          }
+        }
+      }
+      &:hover {
+        border-color: #f4f4f4 !important;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+        transition: border-color 0.167s linear, box-shadow 0.167s linear;
+        .app-list-dd {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.applist-container {
+  position: absolute;
+  right: -100%;
+  width: 100%;
+  background: #fff;
+  height: calc(100% - 120px);
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+  &.in {
+    right: 0;
+  }
+}
+
+::ng-deep {
+  .fluid-layout .app-logo .dot-nav-menu {
+    margin-left: -2px;
+  }
+
+  @media (max-width: 1310px) {
+    .dot-nav-menu {
+      margin-left: 7px !important;
+    }
+  }
+
+  /*USER MENU Popover*/
+
+  .fluid-layout {
+    .apps-module-nav {     
+      @media(min-width:1311px){
+        left: -15px;
+      }
+    }
+  }
+}
+
+@include mq-tablet-potrait-below {
+  .apps-module-nav {
+    //left: 260px;
+    .dot-nav-menu {
+      display: flex !important;
+    }
+  }
+}
+
+.launcher-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  right: 0;
+}

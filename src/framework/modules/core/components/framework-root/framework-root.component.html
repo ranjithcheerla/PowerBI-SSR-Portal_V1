@@ -1,0 +1,54 @@
+<!--Header Component-->
+<app-header *ngIf="preferencesLoaded"></app-header>
+
+<!--Header Component-->
+<div class="content-wrapper">
+  <!-- content starts -->
+  <div class="wrapper main-wrapper container" [ngClass]="{ 'secondary-header-active': appHeaderComponent && showAppHeader }">
+    <ng-container *ngIf="!preferencesLoaded">
+      <app-comp-spinner-section></app-comp-spinner-section>
+    </ng-container>
+
+    <ng-container>
+      <!--Mid content-->
+      <div class="row" *ngIf="!isLogged || (isLogged && preferencesLoaded)">
+        <div class="col-md-auto lhs-section-wrapper d-flex" [ngClass]="{ active: LhsToggled && leftNavActiveState }"
+          *ngIf="isLogged && preferencesLoaded && showLeftNav">
+          <app-leftnav [lhsActive]="LhsToggled" [prefUpdated]="preferencesUpdated"  (leftNavActive)="leftNavActive($event)" (lhsToggle)="LhsToggled = !LhsToggled" [leftMenuTheme]="leftMenuTheme"></app-leftnav>
+        </div>
+        <div class="col-md layout-wrapper">
+          <!-- Secondary header -->
+          <div class="secondary-header" *ngIf="appHeaderComponent && showAppHeader">
+            <ng-container [ngComponentOutlet]="appHeaderComponent"
+              [ndcDynamicInputs]="{defaults: appHeaderCompInput}">
+            </ng-container>
+          </div>
+
+          <!-- Top Site Info starts -->
+          <ng-container *ngIf="isLogged && preferencesLoaded && showSiteInfo">
+            <app-site-info></app-site-info>
+          </ng-container>
+          <!-- Top Site Info ends -->
+          <!--Center section-->
+          <router-outlet *ngIf="isLogged"></router-outlet>
+          <!--Center section end-->
+          <!--content-loader-->
+          <div class="content-loader" *ngIf="showContentLoader">
+            <div class="circle-loader">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <!--content-loader-->
+
+          <app-right-trial></app-right-trial>
+        </div>
+      </div>
+      <!--Mid content End-->
+    </ng-container>
+  </div>
+  <!-- content ends -->
+</div>
+<app-footer *ngIf="showFooter && preferencesLoaded"></app-footer>

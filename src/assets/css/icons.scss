@@ -1,0 +1,140 @@
+/* Widget store icons */
+.ws-sprite {
+  background: url('/assets/images/widgetStore-sprite.png');
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  background-position: -71px -4px;
+  &.icon-WID0011 {
+    background-position: -6px -4px;
+  }
+  &.icon-WID008 {
+    background-position: -6px -4px;
+  }
+  &.icon-WID009 {
+    background-position: -71px -4px;
+  }
+}
+/* Widget store icons */
+
+.ss-sprite{
+  background: url('/assets/images/selfservice_sprite.png');
+  display: inline-block; 
+  &.icon-operations{
+    width: 38px;
+    height: 38px;
+    background-position: -34px -312px;
+  }
+  &.icon-res-mang{
+    width: 38px;
+    height: 38px;
+    background-position: -112px -308px;
+  }
+  &.icon-human-resource{
+    width: 38px;
+    height: 38px;
+    background-position: -192px -308px;
+  }
+  &.icon-loans{
+    width: 42px;
+    height: 38px;
+    background-position: -279px -308px;
+  }
+  &.icon-trust-fund{
+    width: 48px;
+    height: 38px;
+    background-position: -361px -308px;
+  }
+  &.icon-travel{
+    width: 42px;
+    height: 38px;
+    background-position: -437px -304px;
+  }
+  &.icon-wbg-portfolio{
+    width: 40px;
+    height: 38px;
+    background-position: -507px -306px;
+  }
+  &.icon-miga{
+    width: 40px;
+    height: 38px;
+    background-position: -589px -302px;
+  }
+  &.icon-lending{
+    width: 38px;
+    height: 38px;
+    background-position: -33px -439px;
+  }
+  &.icon-portfolio{
+    width: 38px;
+    height: 38px;
+    background-position: -113px -437px;
+  }
+  &.icon-asa{
+    width: 38px;
+    height: 38px;
+    background-position: -194px -436px;
+  }
+  &.icon-ras{
+    width: 38px;
+    height: 38px;
+    background-position: -275px -439px;
+  }
+  &.icon-knowledge{
+    width: 38px;
+    height: 38px;
+    background-position: -350px -434px;
+  }
+  &.icon-cpf{
+    width: 38px;
+    height: 38px;
+    background-position: -417px -435px;
+  }
+}
+
+
+.templ-card.active .ss-sprite{
+  &.icon-operations{
+    background-position: -34px -362px;
+  }
+  &.icon-res-mang{
+    background-position: -112px -361px;
+  }
+  &.icon-human-resource{
+    background-position: -192px -361px;
+  }
+  &.icon-loans{
+    background-position: -279px -361px;
+  }
+  &.icon-trust-fund{
+    background-position: -361px -354px;
+  }
+  &.icon-travel{
+    background-position: -437px -354px;
+  }
+  &.icon-wbg-portfolio{
+    background-position: -507px -354px;
+  }
+  &.icon-miga{
+    background-position: -589px -356px;
+  }
+
+  &.icon-lending{
+    background-position: -33px -499px;
+  }
+  &.icon-portfolio{
+    background-position: -113px -500px;
+  }
+  &.icon-asa{
+    background-position: -194px -498px;
+  }
+  &.icon-ras{
+    background-position: -275px -499px;
+  }
+  &.icon-knowledge{
+    background-position: -350px -496px;
+  }
+  &.icon-cpf{
+    background-position: -417px -496px;
+  }
+}

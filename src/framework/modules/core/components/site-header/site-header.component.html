@@ -1,0 +1,137 @@
+<!-- Header Starts -->
+<header class="header">
+  <nav class="navbar navbar-light fixed-top">
+    <div class="container header-container">
+      <div class="d-flex justify-content-between w-100 position-relative">
+        <div class="app-logo d-flex mr-4 align-items-center">
+          <a href="javascript:;" class="d-inline-flex flex-column dot-nav-menu" *ngIf="showLauncher"
+            (click)="launcher = !launcher">
+            <i class="global-hamburger" aria-hidden="true"></i>
+            <i class="global-hamburger" aria-hidden="true"></i>
+            <i class="global-hamburger" aria-hidden="true"></i>
+          </a>
+          <a href="javascript:;" *ngIf="showHamburgerIcon$ | async" class="app-hamburger d-md-none"
+            (click)="toggleLeftMenu()"><span></span></a>
+          <ng-container *ngIf="titleAndHomePageLink$ | async as titleAndHomePageLink">
+            <a [routerLink]="titleAndHomePageLink.link" class="app-title">{{ titleAndHomePageLink?.title }}</a>
+          </ng-container>
+        </div>
+        <app-globalnav [launcher]="launcher" (globalNavStatus)="setGlobalNavStatus($event)"></app-globalnav>
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-end h-100 align-items-center pos-sm">
+            <ndc-dynamic *ngIf="searchComponent && headerControls.search" [ndcDynamicComponent]="searchComponent">
+            </ndc-dynamic>
+            <div>
+              <a href="javascript:;" class="more-action-btn" [ngClass]="{ open: rightMenuOpen }" (click)="
+                  toggleRightMenu();
+                ">
+                <span class="more-dots"></span>
+              </a>
+              <!-- Mobile Responsive Code -->
+              <div class="mobile-rhs d-sm-none" [ngClass]="{ open: rightMenuOpen }">
+                <div class="mobile-profile-info border-bottom py-4">
+                  <app-user [isPopover]="false"></app-user>
+                </div>
+                <ul>
+                  <li class="border-bottom" *ngIf="headerControls.actions">
+                    <a class="d-flex justify-content-between px-1 py-3" href="javascript:;" (click)="
+                        toggleToolsMenu = true;
+                        toolsActions = true;
+                        toolsSettings = false;
+                        toolsCustom = false;
+                      ">
+                      <span class="mobile-nav-text">Actions</span>
+                      <span class="h-arrow down-arrow"></span>
+                    </a>
+                  </li>
+                  <li class="border-bottom" *ngIf="customAddOnHeaderComponent !== undefined">
+                    <a class="d-flex justify-content-between px-1 py-3" href="javascript:;" (click)="
+                        toggleToolsMenu = true;
+                        toolsActions = false;
+                        toolsSettings = false;
+                        toolsCustom = true;
+                      ">
+                      <span class="mobile-nav-text">{{customAddOnHeaderText}}</span>
+                      <span class="h-arrow down-arrow"></span>
+                    </a>
+                  </li>
+                  <!-- App specific nav items -->
+                  <li class="border-bottom" *ngIf="!!headerControls?.customIcon1?.class" (click)="customIconClick('ICON1')">
+                    <a href="javascript:;" class="d-flex px-1 py-3">
+                      <span class="mobile-nav-text">
+                        <i class="mr-2" [ngClass]="headerControls?.customIcon1?.class" aria-hidden="true"></i>{{headerControls?.customIcon1?.label}}
+                      </span>
+                    </a>
+                  </li>
+                  <li class="border-bottom" *ngIf="!!headerControls?.customIcon2?.class" (click)="customIconClick('ICON2')">
+                    <a href="javascript:;" class="d-flex px-1 py-3">
+                      <span class="mobile-nav-text">
+                        <i class="mr-2" [ngClass]="headerControls?.customIcon1?.class" aria-hidden="true"></i>{{headerControls?.customIcon2?.label}}
+                      </span>
+                    </a>
+                  </li>
+                  <!-- App specific nav items -->
+                  <li class="border-bottom" *ngIf="headerControls.settings">
+                    <a class="d-flex justify-content-between px-1 py-3" href="javascript:;" (click)="
+                        toggleToolsMenu = true;
+                        toolsActions = false;
+                        toolsSettings = true;
+                        toolsCustom = false;
+                      ">
+                      <span class="mobile-nav-text"><i class="fas fa-cog mr-2" aria-hidden="true"></i>Settings</span>
+                      <span class="h-arrow down-arrow"></span>
+                    </a>
+                  </li>
+                </ul>
+
+                <div class="tools-menu" [ngClass]="{ active: toggleToolsMenu }">
+                  <a href="javascript:;" (click)="toggleToolsMenu = false" class="tools-title"><span><i
+                        class="tool-back-arrow" aria-hidden="true"></i> Tools Menu</span></a>
+                  <app-actions [isPopover]="false" (closeMobileMenu)="rightMenuClosed()"
+                    *ngIf="toolsActions && headerControls.actions">
+                  </app-actions>
+                  <app-custom-header-component [isPopover]="false" (closeMobileMenu)="rightMenuClosed()"
+                    *ngIf="toolsCustom && customAddOnHeaderComponent !== undefined"></app-custom-header-component>
+                  <app-settings [isPopover]="false" *ngIf="toolsSettings && headerControls.settings"
+                    (popUpClosed)="sideMenuClosed()">
+                  </app-settings>
+                </div>
+              </div>
+              <!-- Desktop Code -->
+              <div class="overlay-bg subheader-overlay" [ngClass]="{ active: rightMenuOpen }"
+                (click)="rightMenuOpen = false"></div>
+              <ul class="nav topmenu">
+                <li class="nav-item">
+                  <app-actions [isPopover]="true" *ngIf="headerControls.actions">
+                  </app-actions>
+                </li>
+                <li class="nav-item">
+                  <app-custom-header-component [isPopover]="true"></app-custom-header-component>
+                </li>
+                <!-- App specific nav items -->
+                <li class="nav-item" *ngIf="!!headerControls?.customIcon1?.class" (click)="customIconClick('ICON1')">
+                  <a href="javascript:;" class="nav-link" [tooltip]="headerControls?.customIcon1?.tooltip">
+                    <i [ngClass]="headerControls?.customIcon1?.class"></i>
+                  </a>
+                </li>
+                <li class="nav-item" *ngIf="!!headerControls?.customIcon2?.class" (click)="customIconClick('ICON2')">
+                  <a href="javascript:;" class="nav-link" [tooltip]="headerControls?.customIcon2?.tooltip">
+                    <i [ngClass]="headerControls?.customIcon2?.class"></i>
+                  </a>
+                </li>
+                <!-- App specific nav items -->
+                <li class="nav-item" (click)="settingsOptionClicked()">
+                  <app-settings [isPopover]="true" *ngIf="headerControls.settings"></app-settings>
+                </li>
+                <li class="nav-item" *ngIf="showProfile && headerControls.user">
+                  <app-user [isPopover]="true"></app-user>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<!-- Header Ends -->

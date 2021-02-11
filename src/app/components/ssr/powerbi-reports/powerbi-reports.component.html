@@ -1,0 +1,78 @@
+<div class="px-4 pt-2" *ngIf="loaded">
+
+  <div class="row">
+    <ng-container *ngFor="let item of groupedReports">
+      <div class="col-md-12">
+        <!-- <h4 class="mb-4">{{item.key}}</h4> -->
+        <ul class="report-list pr-2" *ngFor="let report of item.values">
+          <li *ngIf="report.name!='coming soon'">
+            <div class="d-flex justify-content-between text-md">
+              <a class='atext' routerLink="/embed-report" (click)="selectedRpt(report)"
+                title='{{report.displayName}}'><i *ngIf="report.reportType=='PowerBIReport'"
+                  class="far fa-chart-bar  mr-2"></i>
+
+                <!-- <i class="fas fa-file-alt mr-2"></i> -->
+                <i *ngIf="report.reportType=='PaginatedReport'"
+                  class="fas fa-file-powerpoint mr-2"></i>{{report.displayName}}</a>
+              <span>
+
+                <a href="javascript:;" *ngIf="report.reportType=='PowerBIReport'"
+                  (click)="openModal(addFavorite,report,'fav')" title='Add to My Reports'><i
+                    class="far fa-star"></i></a>
+                <a href="javascript:;" (click)="exportReport(report)" title='Export to PowerBI Desktop'> <i
+                    class="fas fa-cloud-download-alt ml-2"></i></a>
+                <a href="{{report.excelUrl}}" title='Analyze in Excel'> <i class="fas fa-file-excel ml-2"></i></a>
+                <a href="javascript:;" (click)="copyReport(report)" title='Copy Embed Url'> <i
+                    class="fas fa-external-link-alt ml-2 "></i></a>
+              </span>
+
+            </div>
+          </li>
+        </ul>
+        <br />
+      </div>
+    </ng-container>
+
+  </div>
+
+
+</div>
+
+<ng-template #addFavorite>
+  <div class="modal-header justify-content-between custom-header">
+    <h3 class=" font-weight-normal mb-3">{{favShareTitle}}</h3>
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group lp-form-group">
+          <label><span class="lp-required">*</span> Label</label>
+          <div class="">
+            <input type="text" [(ngModel)]="saveRptName" placeholder="Give the report name to save"
+              class="form-control lp-form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-end pt-3 mb-3">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn mr-3" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn"
+      (click)="confirm();opensuccessModal(templatesucess)">SAVE</button>
+  </div>
+</ng-template>
+
+<ng-template #templatesucess>
+  <div class="modal-header justify-content-end custom-header">
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-check-circle success-color" aria-hidden="true"></i></div>
+      <div class="h3">Success!</div>
+      <div>Report Saved Successfully</div>
+      <div><a href="javascript:;" (click)="routeMyfav()">Click here to open the report.</a> </div>
+    </div>
+  </div>
+</ng-template>

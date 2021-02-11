@@ -1,0 +1,183 @@
+@import '~framework/assets/css/variables.scss';
+// MIXINS
+@mixin mq-phone-above {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+@mixin mq-tablet-potrait-above {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+@mixin mq-tablet-landscape-above {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+@mixin mq-desktop-above {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+@mixin mq-desktop-below {
+  @media (max-width: #{$screen-xl-max}) {
+    @content;
+  }
+}
+@mixin mq-tablet-landscape-below {
+  @media (max-width: #{$screen-lg-max}) {
+    @content;
+  }
+}
+@mixin mq-tablet-potrait-below {
+  @media (max-width: #{$screen-md-max}) {
+    @content;
+  }
+}
+@mixin mq-phone-only {
+  @media (max-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+
+@mixin circle-pic($width: 36px, $height: null, $border: null) {
+  @if ($height == null) {
+    $height: $width;
+  }
+  width: $width;
+  height: $height;
+  min-width: $width;
+  min-height: $height;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+}
+@mixin circle-pic-img {
+  width: 100%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 56%;
+  position: absolute;
+}
+
+@mixin box-shadow($x, $y, $offset, $color, $inset: false) {
+  @if $inset {
+    box-shadow: inset $x $y $offset $color;
+  } @else {
+    box-shadow: $x $y $offset $color;
+  }
+}
+
+@mixin arrow-icon($direction, $color) {
+  @if not index(arrow-up arrow-down arrow-right arrow-left, $direction) {
+    @error "Direction must be either `arrow-up`,`arrow-right`,`arrow-left`, or `arrow-down`";
+  }
+
+  @if $direction == arrow-up {
+    transform: rotate(224deg);
+  } @else if $direction == arrow-down {
+    transform: rotate(45deg);
+  } @else if $direction == arrow-right {
+    transform: rotate(315deg);
+  } @else if $direction == arrow-left {
+    transform: rotate(135deg);
+  }
+  color: $color;
+  border: solid;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  position: relative;
+}
+
+/**
+****  Use for plus icon @include  cirlce-with-plus-minus-icon($linkColor,#fff,true);
+****  Use for minus icon @include cirlce-with-plus-minus-icon($linkColor,#fff,false);
+**/
+@mixin cirlce-with-plus-minus-icon(
+  $cirbgcolor,
+  $pluscolor,
+  $minus: false,
+  $cirwidth: 20px,
+  $cirheight: 20px,
+  $pluswidth: 2px,
+  $plusheight: 2px
+) {
+  border-radius: 50%;
+  width: $cirwidth;
+  height: $cirheight;
+  background-color: $cirbgcolor;
+  position: relative;
+  display: inline-block;
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+  }
+  &::after {
+    height: $plusheight;
+    margin-top: -2px;
+    top: 50%;
+    left: 5px;
+    right: 5px;
+    background-color: $pluscolor;
+  }
+  &::before {
+    width: $pluswidth;
+    margin-left: -1px;
+    left: 50%;
+    top: 4px;
+    bottom: 5px;
+    @if (minus== true) {
+      background-color: $pluscolor;
+    } @else {
+      background-color: none;
+    }
+  }
+}
+
+@mixin plus-minus-icon($color, $minus: false, $width: 13px, $height: 11px) {
+  position: relative;
+  width: $width;
+  height: $height;
+  display: inline-block;
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: $color;
+  }
+  &:before {
+    top: 0;
+    left: 50%;
+    @if $minus ==true {
+      width: 0px;
+    } @else {
+      width: 2px;
+    }
+    height: 100%;
+    margin-left: -2px;
+  }
+  &:after {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    margin-top: -2px;
+  }
+}
+
+@mixin cirle-with-fill($bgcolor, $bordercolor, $width: 16px, $height: 16px) {
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+  display: inline-block;
+  background: $bgcolor;
+  border: 1px solid $bordercolor;
+}

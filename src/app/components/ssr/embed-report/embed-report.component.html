@@ -1,0 +1,147 @@
+<div class="card">
+  <div class="header-back-button">
+    <a routerLink="{{selectRptInfo.backurl}}">
+
+      < Back </a>
+      <span class="ml-3" *ngIf="isEdcRpt || isEditGallery"><button *ngIf="!isEditGallery"
+        class="btn lp-btn report-btn btn-primary btn-lg text-uppercase d-flex align-items-center"
+        (click)="openEdcModal(publishEdc,selectRptInfo)">
+        <i class="report-sprite mr-2"></i> Publish to EDC </button><button *ngIf="isEditGallery"
+        class="btn lp-btn report-btn btn-primary btn-lg text-uppercase d-flex align-items-center"
+        (click)="openEdcSaveSuccessModel(templatesucess)">
+        <i class="report-sprite mr-2"></i> Save to EDC </button></span> <span *ngIf="isMyFavs">  <a *ngIf="isView" routerLink="/embed-report" class="colorblack text-sm"
+          (click)="embedRpt('Edit')"><i class="far fa-pencil mr-1"></i>Edit</a><a *ngIf="!isView"
+          routerLink="/embed-report" class="colorblack text-sm" (click)="embedRpt('View')">View</a></span>
+          
+        
+        <span *ngIf="!isMyFavs && selectRptInfo.reportType=='PowerBIReport' && isProUser"><button
+            class="btn lp-btn report-btn btn-primary btn-lg text-uppercase d-flex align-items-center"
+            (click)="openModal(addFavorite,selectRptInfo)">
+            <i class="report-sprite icon-plus-white mr-2"></i> Add to My Reports</button></span>
+            <span *ngIf="!isProUser && selectRptInfo.isTemplate">
+              <div class="mr-5" style="font-weight: 700;color:#495057">* To access PowerBI, a PowerBI Pro-License must be provisioned to you. You could book a collaboration consultation for more advice at 
+              <a href='https://outlook.office365.com/owa/calendar/ITConsultations@worldbankgroup.onmicrosoft.com/bookings/'>EDC</a></div>
+            </span>
+        <!--<span><a (click)="printPowerBIReport()" title="Print"> <i class="fas fa-print mr-1"></i>&nbsp;&nbsp;</a></span>-->
+
+  </div>
+  <hr />
+  <div id="pbi-container" class='powerDiv'>
+  </div>
+
+</div>
+
+
+<ng-template #publishEdc>
+  <div class="modal-header justify-content-between custom-header">
+    <h3 class=" font-weight-normal mb-3">Publish to EDC</h3>
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group lp-form-group">
+          <label><span class="lp-required">*</span> Dashboard/Report Name</label>
+          <div class="">
+            <input type="text" [(ngModel)]="edcRptName" placeholder="Give the report name to publish"
+              class="form-control lp-form-control">
+          </div><br><br>
+          <div class="form-group lp-form-group">
+            <label><span class="lp-required">*</span> Description</label>
+            <div class="">
+              
+<textarea _ngcontent-btc-c37="" class="form-control description-sec ng-untouched ng-pristine ng-invalid" 
+[(ngModel)]="edcRptDescr" maxlength="4000" placeholder="Provide a brief description of the dashboard/report">                      
+  </textarea>
+
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-end pt-3 mb-3">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn mr-3" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn"
+      (click)="confirm();openEdcSuccessModal(templatesucess)">Publish</button>
+  </div>
+</ng-template>
+
+<ng-template #addFavorite>
+  <div class="modal-header justify-content-between custom-header">
+    <h3 class=" font-weight-normal mb-3">Add to My Reports</h3>
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group lp-form-group">
+          <label><span class="lp-required">*</span> Report Name</label>
+          <div class="">
+            <input type="text" [(ngModel)]="saveRptName" placeholder="Give the report name to save"
+              class="form-control lp-form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-end pt-3 mb-3">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn mr-3" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn"
+      (click)="confirm();opensuccessModal(templatesucess)">SAVE</button>
+  </div>
+</ng-template>
+
+<ng-template #edcsucess>
+  <div class="modal-header justify-content-end custom-header">
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-check-circle success-color" aria-hidden="true"></i></div>
+      <div class="h3">Success!</div>
+      <div>Report Published Successfully !!</div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #publishedc>
+  <div class="modal-header justify-content-between custom-header">
+    <h3 class=" font-weight-normal mb-3">Publish the Report to EDC</h3>
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group lp-form-group">
+          <label><span class="lp-required">*</span> Label</label>
+          <div class="">
+            <input type="text" [(ngModel)]="saveRptName" placeholder="Give the report name to save"
+              class="form-control lp-form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-end pt-3 mb-3">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn mr-3" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn"
+      (click)="confirm();opensuccessModal(templatesucess)">SAVE</button>
+  </div>
+</ng-template>
+
+<ng-template #templatesucess>
+  <div class="modal-header justify-content-end custom-header">
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-check-circle success-color" aria-hidden="true"></i></div>
+      <div class="h3">Success!</div>
+      <div>Report Saved Successfully</div>
+      <div><a href="javascript:;" (click)="routeMyfav()">Click here to open the report.</a> </div>
+    </div>
+  </div>
+</ng-template>

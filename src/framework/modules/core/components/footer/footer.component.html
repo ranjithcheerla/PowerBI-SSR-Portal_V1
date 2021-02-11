@@ -1,0 +1,19 @@
+<footer class="footer">
+  <div class="container h-100">
+    <div class="footer-row h-100">
+      <div>
+        <ul class="footer-menu">
+          <li class="f-label">WBG External Sites:</li>
+          <li *ngFor="let items of bottomJson.bottom.LHS">
+            <a href="{{items.link}}" target="_blank" rel="noopener">{{items.text}}</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <ul class="footer-menu contact">
+          <li *ngFor="let items of bottomJson.bottom.RHS" [innerHTML]="items.text | safe : 'html'"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

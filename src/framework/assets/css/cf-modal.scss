@@ -1,0 +1,56 @@
+.cf-modal {
+  .modal-content {
+    border-radius: 0;
+    border: 0;
+    color: $cf-modal-text-color;
+    font-size: 14px;
+  }
+  .modal-header {
+    padding: 16px 24px 0;
+    border-bottom: 0;
+  }
+  .modal-title {
+    color: $cf-modal-text-color;
+    font-size: 16px;
+    font-weight: normal;
+  }
+  .modal-body {
+    padding: 16px 24px;
+  }
+  .modal-footer {
+    margin: 0 24px;
+    padding: 16px 0;
+    border-top-color: $cf-modal-border-color;
+  }
+  .modal-icon {
+    font-size: 80px;
+    &-md {
+      font-size: 50px !important;
+    }
+  }
+  &.cf-modal-sm {
+    @media (min-width: 575px) {
+      max-width: 375px;
+      min-width: 375px;
+    }
+  }
+  &.cf-modal-md {
+    @media (min-width: 575px) {
+      max-width: 475px;
+      min-width: 475px;
+    }
+  }
+  &.cf-modal-lg {
+    .modal-title {
+      font-size: 22px;
+      line-height: 30px;
+    }
+    .modal-body {
+      padding: 24px;
+    }
+    @media (min-width: 768px) {
+      max-width: 576px;
+      min-width: 576px;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.breadcrumb {
+  margin-bottom: 6px;
+  margin-top: -4px;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  background-color: transparent;
+  color: #515365;
+
+  .breadcrumb-item+.breadcrumb-item::before {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+
+  >li {
+    &+li {
+      &:before {
+        padding: 0 2px;
+      }
+
+      a,
+      a:hover,
+      span {
+        margin-left: -3px;
+      }
+    }
+  }
+}

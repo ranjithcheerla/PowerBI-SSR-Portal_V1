@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-between">
+  <h2 class="andes fw-sbold mb-4">Trust Funds</h2>
+  <div class="d-flex align-items-center mb-3 pb-1">
+    <button (click)="setCreateReportParam()"
+      class="btn lp-btn report-btn btn-primary btn-lg text-uppercase d-flex align-items-center"
+      routerLink="/create-report">
+      <i class="report-sprite icon-plus-white mr-2"></i> Create Report</button>
+  </div>
+</div>
+<div class="card">
+  <app-portfolio></app-portfolio>
+
+  <!-- Vertical Tab -->
+  <!-- <div class="spi-tab-container spi-vertical-tab" [ngClass]="{ 'vertical-tabopen' : navslideopen }">
+    <span class="spi-tap-open" (click)="navslideopen = !navslideopen"><i class="fas fa-chevron-right"></i></span>
+    <tabset class="spi-tabset custom-v-tab row" [vertical]="true">
+      <tab heading="Fund Raising Initiative(FIN)s">
+        <app-portfolio></app-portfolio>
+      </tab>
+      <tab heading="Trust Fund Proposal(TFP)s">
+        <app-portfolio></app-portfolio>
+      </tab>
+      <tab heading="Contributions">
+        <app-portfolio></app-portfolio>
+
+      </tab>
+
+      <tab heading="Grant Funding Requests(GFR)s">
+        <app-portfolio></app-portfolio>
+
+      </tab>
+      <tab heading="Grant Commitments">
+        <app-portfolio></app-portfolio>
+
+      </tab>
+      <tab heading="Grant Report Monitoring(GRM)s">
+        <app-portfolio></app-portfolio>
+
+      </tab>
+      <tab heading="Fund Master">
+        <app-portfolio></app-portfolio>
+
+      </tab>
+      <tab heading="EFOs">
+        <app-portfolio></app-portfolio>
+
+      </tab>
+
+      <tab heading="Financial Intermediary Funds (FIFS)">
+        <app-portfolio></app-portfolio>
+
+      </tab>
+
+
+    </tabset>
+  </div> -->
+  <!-- Vertical Tab -->
+
+
+
+
+  <ng-template #gridToolbar>
+    <div class="d-flex justify-content-end view-toolbar">
+      <ul class="grid-toolbar d-flex align-items-center">
+        <li>
+          <input placeholder="Search..." class="gt-searchbox" type="text" [(ngModel)]="searchTerm"
+            (ngModelChange)="doserach($event)" #inpSrcKwd />
+          <a class="report-sprite icon-search-dark" href="javascript:;" tooltip="Search" (click)="inpSrcKwd.focus();"
+            placement="bottom">
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </ng-template>
+</div>

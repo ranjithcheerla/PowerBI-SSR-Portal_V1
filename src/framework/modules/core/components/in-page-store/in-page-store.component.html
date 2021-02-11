@@ -1,0 +1,87 @@
+<!-- content starts -->
+<div class="row h-100">
+  <!-- left section -->
+  <div class="col-md-auto pt-3" id="aw-categoryList">
+    <ul class="aw-leftnav">
+      <li *ngFor="let category of categories|keys">
+        <a href="javascript:;" [class.active]="category === selectedCategory"
+          (click)="selectCategory(category)">{{category}}</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- right section -->
+  <div class="col-md py-3" id="aw-dashboardSec">
+    <div class="aw-rightsection">
+      <div class="cf-search-group mb-4">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input type="text" class="form-control" #searchTerm (input)="searchWidgetStore(searchTerm.value)" placeholder="Search Apps">
+      </div>
+      <div class="aw-widgets mb-3">
+
+        <ng-container *ngIf="!showSearchedWidgets">
+          <!--CASE: individual category selected -->
+          <ng-container *ngIf="selectedCategory !== 'All'">
+            <div class="aw-widgets mb-3">
+              <h6 class="aw-title">{{selectedCategory}}</h6>
+              <div class="row">
+                <div class="col-auto aw-col" *ngFor="let widget of categories[selectedCategory]">
+                  <ng-container [ngTemplateOutlet]="widgetTmpl" [ngTemplateOutletContext]="{widget: widget}">
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!--CASE: individual category selected -->
+
+          <!--CASE: All category selected -->
+          <ng-container *ngIf="selectedCategory === 'All'">
+            <div class="aw-widgets" *ngFor="let category of categories|keys|slice:1">
+              <h6 class="aw-title">{{category}}</h6>
+              <div class="row">
+                <div class="col-auto aw-col" *ngFor="let widget of categories[$any(category)]">
+                  <ng-container [ngTemplateOutlet]="widgetTmpl" [ngTemplateOutletContext]="{widget: widget}">
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!--CASE: All category selected -->
+        </ng-container>
+
+        <!--CASE: Search Results -->
+        <div class="aw-widgets" *ngIf="showSearchedWidgets">
+          <h6 class="aw-title">Search results for "{{searchTerm.value}}"</h6>
+          <div class="row" *ngIf="searchResults.length; else noresults">
+            <div class="col-auto aw-col mt-3 mr-3" *ngFor="let widget of searchResults">
+              <ng-container [ngTemplateOutlet]="widgetTmpl" [ngTemplateOutletContext]="{widget: widget}"></ng-container>
+            </div>
+          </div>
+        </div>
+        <!--CASE: Search Results -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- content ends -->
+
+<ng-template #widgetTmpl let-item="widget">
+  <a (click)="addwidget(item)" href="javascript:;" class="widget-item"
+    [ngClass]="{'added' : (item.added || selectedWidgets[item.widgetKey]) && !item.isWidMultiple}">
+    <div class="aw-icon" [ngClass]="{'added' : item.added}">
+      <i class="ws-sprite icon-{{item.widgetKey}}" aria-hidden="true"></i>
+      <span class="checkmark draw"></span>
+      <span class="plus"></span>
+    </div>
+    <p class="aw-widgetname" title="{{item.widgetName}}">{{item.widgetName}}</p>
+    <div class="aw-widget-status" *ngIf="item.added">Added</div>
+    <div class="btm-actions">
+    </div>
+  </a>
+  <div toastContainer></div>
+</ng-template>
+
+<ng-template #noresults>
+  No widgets Found
+</ng-template>

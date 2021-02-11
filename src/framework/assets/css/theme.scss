@@ -1,0 +1,116 @@
+@mixin apply-theme($theme) {
+  $map-header: map-get($theme, 'header');
+  $map-leftnav: map-get($theme, 'leftnav');
+
+  .nav.topmenu > li a.nav-link.active,
+  .more-action-btn.open {
+    background-color: map-get($map-header, 'link-active-bg');
+  }
+  .wb-logo {
+    background-image: url(map-get($map-header, 'wb-logo'));
+  }
+  header .navbar {
+    color: map-get($map-header, 'foreground');
+    background: map-get($map-header, 'background');
+    a {
+      color: map-get($map-header, 'link');
+      &.app-title {
+        color: map-get($map-header, 'foreground');
+      }
+    }
+    .more-action-btn .more-dots {
+      &,
+      &:after,
+      &:before {
+        background-color: map-get($map-header, 'more-button');
+      }
+    }
+
+    .global-hamburger {
+      background-color: map-get($map-header, 'more-button');
+      &:before,
+      &:after {
+        background: map-get($map-header, 'more-button');
+      }
+    }
+
+    // .global-nav-menu{
+    //   background-color: map-get($map-header, "globalNavColor");
+    //   &:before, &:after{
+    //     background: map-get($map-header, "globalNavColor");;
+    //   }
+    // }
+
+    @include mq-phone-only {
+      .actions-list a {
+        color: $bodyTextColor;
+      }
+    }
+  }
+  .header-search {
+    background-color: map-get($map-header, 'background');
+    .search-box,
+    .search-box::placeholder {
+      color: map-get($map-header, 'foreground');
+    }
+  }
+
+  .left-nav {
+    &,
+    ul {
+      color: map-get($map-leftnav, 'foreground');
+      background: map-get($map-leftnav, 'background');
+    }
+    a {
+      color: map-get($map-leftnav, 'foreground');
+    }
+    li.active, li.parent-active {
+      > a {
+        color: map-get($map-leftnav, 'link-active');
+        background: map-get($map-leftnav, 'link-active-bg');
+      }
+      &:before {
+        background-color: map-get($map-leftnav, 'link-active-border');
+      }
+    }
+    .more-dots {
+      &,
+      &:after,
+      &:before {
+        background-color: map-get($map-leftnav, 'foreground');
+      }
+    }
+    .back-to-menu {
+      border-bottom: 1px solid map-get($map-leftnav, 'back-menu-border');
+    }
+    .lhs-menu a.has-submenu.flipit.active {
+      background-color: map-get($map-leftnav, 'background');
+    }
+  }
+  .nav-collapse,
+  .mobile-collapsed-menu {
+    color: map-get($map-leftnav, 'collapse-fg');
+    background-color: map-get($map-leftnav, 'collapse-bg');
+  }
+  @include mq-desktop-above {
+    .lhs-dd-menu .left-nav .lhs-menu li a.has-submenu + .submenu a:hover{
+      background: map-get($map-leftnav, 'link-active-bg');
+    }
+  }
+}
+
+.cf-theme1 {
+  @include apply-theme($theme1);
+}
+.cf-theme2 {
+  @include apply-theme($theme2);
+}
+.cf-theme3 {
+  @include apply-theme($theme3);
+}
+.cf-theme4 {
+  @include apply-theme($theme4);
+}
+.cf-theme5 {
+  @include apply-theme($theme5);
+}

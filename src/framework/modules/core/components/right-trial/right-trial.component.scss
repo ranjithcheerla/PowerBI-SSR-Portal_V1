@@ -1,0 +1,93 @@
+@import "~framework/assets/css/sassimport.scss";
+.add-widget-layer {
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 1051;
+  top: 0;
+  right: -110%;
+  width: 370px;
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(250, 250, 250, 1);
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+
+  &.sidebar-open {
+    z-index: 1151;
+    right: 0;
+  }
+  i {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 16px;
+  }
+  &.fit-screen {
+    width: 860px;
+    max-width: 100%;
+  }
+}
+
+.trail-header {
+  display: block;
+  padding: 20px;
+  border-bottom: 1px solid #e8e9f0;
+}
+.trail-header-title{  
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.87);
+  font-weight: 600;  
+}
+// .trail-body {
+//   min-height: calc(100% - 55px);
+// }
+
+// full screen styles
+:host ::ng-deep {
+  #aw-categoryList {
+    display: none;
+  }
+  #aw-dashboardSec {
+    padding: 15px 40px;
+  }
+  .fit-screen {
+    #aw-categoryList {
+      display: block;
+    }
+    #aw-dashboardSec {
+      padding: 15px 30px 15px 0;
+    }
+    .aw-leftnav {
+      min-width: 152px;
+      min-height: calc(100vh - 72px);
+    }
+    .aw-col {
+      .aw-widgetname {
+        white-space: normal !important;
+      }
+      .btm-actions {
+        display: block !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      .aw-rightsection .cf-search-group {
+        position: absolute;
+        top: -36px;
+        left: auto;
+        right: 105px;
+        width: 40%;
+      }
+      .aw-widgets {
+        margin: 10px;
+      }
+    }
+  }
+  @include mq-tablet-landscape-below {
+    .add-widget-layer {
+      top: map-get($header-height, lg);
+    }
+  }
+  @include mq-phone-only {
+    .add-widget-layer {
+      top: map-get($header-height, sm);
+    }
+  }
+}

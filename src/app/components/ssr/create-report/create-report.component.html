@@ -1,0 +1,238 @@
+<div class="container cf-container mb-5 mt-5">
+  <div class="text-md fw-sbold mb-3">
+    Choose how you like to proceed
+  </div>
+  <div class="d-flex flex-wrap w-100 mb-2">
+    <div class="custom-control custom-radio custom-radio-sm mr-3 mb-2">
+      <input type="radio" id="existing_templ" (click)="chooseTemp='existing'" [checked]="chooseTemp=='existing'"
+        name="choose-report" class="custom-control-input" />
+      <label class="custom-control-label" for="existing_templ">Existing Template</label>
+    </div>
+    <div class="custom-control custom-radio custom-radio-sm mr-3 mb-2">
+      <input type="radio" id="scratch_templ" (click)="chooseTemp='scratch'" [checked]="chooseTemp=='scratch'"
+        name="choose-report" class="custom-control-input" />
+      <label class="custom-control-label" for="scratch_templ">Start from Scratch</label>
+    </div>
+  </div>
+
+  <div class="d-flex mb-3 pb-1" *ngIf="chooseTemp=='scratch'">
+    <h3 class="andesbold mr-2 mb-0 text-xxl">Untitled Report</h3>
+    <a href="javascript:;" class="fal fa-pencil-alt mt-2 pt-1"></a>
+  </div>
+
+  <div class="cf-wrapper {{cfProgress}}">
+    <app-choose-template></app-choose-template>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="mb-4 pb-3 text-center">
+  <h2 class="mb-0 font-weight-bold">Our Expertise can help you generate the right report</h2>
+</div>
+<div class="lp-create-page py-4 px-5">
+  <div class="row">
+    <div class="col-12 mb-5">
+      <div class="breadcrumb-reports" *ngIf="!businessLine">
+        <ul class="d-flex flex-wrap">
+          <li *ngIf="businessArea || createreport">
+            <div class="mb-3 pb-1 text-md">Business Line:<strong>{{selectedModule}}</strong> <a href="javascript:;"
+                class="pl-2 text-sm" (click)="backButtonClick('businessArea')">Change</a>
+            </div>
+          </li>
+          <li *ngIf="businessLine || createreport">
+            <div class="mb-3 pb-1 text-md">Business Area:<strong>{{selBusArea}}</strong> <a href="javascript:;"
+                class="pl-2 text-sm" (click)="backButtonClick('createreport')">Change</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-weight-bold pt-3" *ngIf="businessLine">Business Line</h2>
+        <h2 class="font-weight-bold" *ngIf="businessArea">Business Area</h2>
+      </div>
+    </div>
+    <div class="col-md-8">
+
+      <div class="business-line" *ngIf="businessLine">
+        <div class="d-flex flex-wrap container px-0">
+          <div class="report-type mr-0 mr-sm-4  mb-4 position-relative" *ngFor="let items of datasources">
+            <div class="report-card-body text-center" (click)="updateModuleClick(items.key)">
+              <div class="text-md text-center">
+                <span class="report-sprite icon-{{items.key}} mt-3 mb-3 pb-1"></span>
+                <div class="fw-sbold report-name mb-3">
+                  {{items.key}}
+                </div>
+              </div>
+              <div class="flip-overlay" *ngIf="selectedModule == items.key">
+                <div class="flip-content">
+                  <div>
+                    <span class="check-mark report-sprite icon-selected-check"></span>
+                  </div>
+                  <div class="report-type-footer text-center text-md">
+                    {{items.key}}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="d-flex footerbtn pt-3 border-top justify-content-end mb-5 pb-4 w-100">
+            <a href="javascript:;" class="d-flex align-items-center" *ngIf="!businessLine"
+              (click)="backButtonClick('businessArea')"><i class="fas fa-chevron-left mr-2 fs-12 pt-1"></i><span
+                class="text-md">Back</span></a>
+            <div class="d-flex">
+              <a href="javascript:;" routerLink="/"
+                class="d-flex align-items-center fw-sbold fs-14 mr-4"><span>CANCEL</span></a>
+              <a class="btn btn-primary fs-14 text-uppercase fw-bold text-center report-form-btn lp-btn"
+                href="javascript:;" (click)="continueClick('businessArea')" [class.disabled]="selectedModule == ''">
+                Continue
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="business-area" *ngIf="businessArea">
+        <div class="d-flex flex-wrap container px-0">
+          <ng-container *ngFor="let items of datasources">
+            <ng-container *ngIf="items.key == selectedModule">
+              <ng-container *ngFor="let report of items.values">
+                <div class="report-type mr-0 mr-sm-4  mb-4 position-relative" (click)="updateBusAreaClick(report)">
+                  <div class="report-card-body text-center">
+                    <div class="text-md text-center">
+                      <span class="report-sprite icon-{{report.busArea | lowercase }} mt-4 mb-3 pb-1"></span>
+                      <div class="fw-sbold report-name mb-4 pb-2">
+                        {{report.busArea}}
+                      </div>
+                    </div>
+                    <div class="flip-overlay" *ngIf="selBusArea == report.busArea">
+                      <div class="flip-content">
+                        <div>
+                          <span class="check-mark report-sprite icon-selected-check"></span>
+                        </div>
+                        <div class="report-type-footer text-center text-md">
+                          {{report.busArea}}
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+        <div class="d-flex pt-3 border-top justify-content-between mb-5 pb-4">
+          <a href="javascript:;" class="d-flex align-items-center" (click)="backButtonClick('businessArea')"><i
+              class="fas fa-chevron-left mr-2 fs-12 pt-1"></i><span class="text-md">Back</span></a>
+          <div class="d-flex justify-content-end text-right">
+            <a href="javascript:;" routerLink="/"
+              class="d-flex align-items-center fw-sbold fs-14 mr-4"><span>CANCEL</span></a>
+            <a class="btn btn-primary fs-14 text-uppercase fw-bold text-center report-form-btn lp-btn"
+              href="javascript:;" (click)="continueClick('createreport')" [class.disabled]="selBusArea == ''">
+              Continue
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="create-report" *ngIf="createreport">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group lp-form-group">
+              <label><span class="lp-required">*</span> Report Name</label>
+              <div class="report-title-edit">
+                <input type="text" class="form-control lp-form-control" [(ngModel)]="userEnterRptName"
+                  (click)="showedit()">
+                <div class="edit-links">
+                  <div class="d-flex align-items-center" *ngIf="show">
+                    <a href="javascript:;" routerLink="/" class="mr-3" tooltip="Cancel"
+                      (click)="c.value = oldTitle; editTitle=false"><i class="report-sprite icon-times-close"></i></a>
+                    <a href="javascript:;" tooltip="Save"
+                      (click)="inlineUpdate(c.value,c,'richTextEditor');editTitle=false" class="mr-1"><i
+                        class="report-sprite icon-tick-save"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="d-flex pt-3 border-top justify-content-between mb-5 pb-4">
+          <a href="javascript:;" class="d-flex align-items-center" (click)="backButtonClick('createreport')"><i
+              class="fas fa-chevron-left mr-2 fs-12 pt-1"></i><span class="text-md">Back</span></a>
+          <div class="d-flex justify-content-end text-right">
+            <a class="btn btn-primary fs-14 text-uppercase fw-bold text-center report-form-btn lp-btn"
+              href="javascript:;" (click)="openModal(templatesucess)" [class.disabled]="userEnterRptName == ''">
+              Create
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+  
+    <div class="col-md-4">
+      <div class="reports-help border-left pl-4">
+        <div>
+          <div class="mb-1"><i class="report-sprite icon-help"></i></div>
+          <h5 class="help-title text-lg">Help</h5>
+          <div class="help-desc text-md">Please contact BI help for more information.</div>
+          <div class="text-md mt-3">
+            <div class="colorblack-60">Reach out to</div>
+            <a href="javascript:;">bihelp@worldbankgroup.org</a>
+          </div>
+        </div>
+
+       
+      </div>
+    </div>
+   
+  </div>
+</div>
+
+<ng-template #Create>
+  <div class="modal-body p-5 text-center">
+    <h4 class="font-weight-bold">Hold on, We are generating your report!</h4>
+    <a href="javascript:;" (click)="confirm();opensuccessModal(templatesucess)">
+      <div class="position-relative my-4">
+        <div class="progress-custom w-100 d-flex align-items-center">
+          <div class="progress w-100">
+            <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="37" aria-valuemin="0"
+              aria-valuemax="100"></div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #templatesucess>
+  <div class="modal-header justify-content-end custom-header">
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="mb-4"><i class="report-sprite icon-success-check" aria-hidden="true"></i></div>
+      <div class="h3 mb-2">Success!</div>
+      <div>Report Saved Successfully</div>
+      <div><a href="javascript:;" (click)="routeMyfav()">Click here to open the report.</a> </div>
+    </div>
+  </div>
+</ng-template> -->

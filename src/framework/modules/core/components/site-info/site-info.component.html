@@ -1,0 +1,24 @@
+<div class="row siteinfo">
+  <div class="col-md">
+    <app-breadcrumb *ngIf="showBreadcrumb" [breadcrumbItem]="breadcrumbItemsArr" [disableLastChildClick]="true"
+      (breadCrumbClick)="onBreadCrumbChange($event)"></app-breadcrumb>
+    <div class="page-title" *ngIf="showSiteTitle">
+      <ng-container [ngComponentOutlet]="siteTitleComponent" *ngIf="siteTitleComponent && !editTitle"></ng-container>
+      <!-- Edit & save Icon added  -->
+      <input *ngIf="editTitle" type="text" [(ngModel)]="updatedSiteTitle" name="updatedSiteTitle" class="edittxt" />
+      <div class="andesbold" *ngIf="!siteTitleComponent && !editTitle">{{ siteTitle }}</div>
+      <div class="ml-2 action-links">
+        <div *ngIf="editTitle">
+          <a href="javascript:;" id="saveTitle" (click)="upDatePageTitle()"><i class="fas fa-check p-2" aria-hidden="true"></i></a>
+          <a href="javascript:;" id="cancelTtlEdit" (click)="editTitle = false"><i class="fas fa-times p-2" aria-hidden="true"></i></a>
+        </div>
+        <a href="javascript:;" (click)="showEditText()" *ngIf="!editTitle && showEditOption" class="linktxt"
+          tooltip="Edit Title" placement="bottom"><i class="fas fa-pencil-alt mx-2" aria-hidden="true"></i></a>
+      </div>
+      <!-- Edit & save Icon added  -->
+    </div>
+    <div class="col-auto">
+      <ng-container [ngComponentOutlet]="pageConfigComponent"></ng-container>
+    </div>
+  </div>
+</div>

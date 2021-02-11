@@ -1,0 +1,55 @@
+<div class="container cf-container mb-5 mt-5">
+    <h3 class="font-weight-normal pb-4">Select a lending template that matches to customize your report</h3>
+    <div class="row mb-4 row-mx-12">
+        <div class="col-lg-4 col-6 mb-4" *ngFor="let data of bussinessLine let i =index;">
+            <div class="templ-card lending-card">
+                <div class="card-img-wrap">
+                    <img src="/assets/images/{{data.img}}">
+                </div>
+                <h5 class="andes px-2 py-3 mb-0 text-left mx-1">{{data.title}}</h5>
+                <div class="card-hover-icon">
+                    <button class="cf-btn btn btn-primary card-preview-btn"
+                        (click)="openModal(template)">Preview</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cf-footer-btn border-top mt-4 pt-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <a href="javascript:;" class="d-inline-flex text-uppercase text-sm font-weight-bold"
+                routerLink="/create-report">
+                <em class="fas fa-chevron-left text-md mr-2"></em>
+                Back
+            </a>
+            <button class="btn btn-primary cf-footer-btn" routerLink="/view-report">
+                Continue
+            </button>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <div class="modal-title pull-left andesbold">Template Preview</div>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="preview-template-bg">
+            <div class="d-flex justify-content-between align-items-center pb-3 mb-3 border-bottom">
+                <div>
+                    <h6 class="mb-0">Lending Outliers</h6>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="modalRef.hide()" routerLink="/view-report">USE
+                        TEMPLATE</button>
+                </div>
+            </div>
+            <div class="overflow-auto">
+                <img class="img-fluid" src="../assets/images/template-prev.png">
+            </div>
+        </div>
+    </div>
+</ng-template>

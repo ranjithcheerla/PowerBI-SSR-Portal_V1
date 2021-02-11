@@ -1,0 +1,38 @@
+export { LoggerService } from './logger.service';
+export { AdalService } from './adal.service';
+export { Api } from './api.service';
+export { AppInsightsService } from './app-insights.service';
+export { AppService } from './app.service';
+export { CacheService } from './cache.service';
+export { CfwDebugService } from './cfw-debug.service';
+export { ConfigurationService } from './configuration.service';
+export { LOGGEDIN_USER } from './core.token';
+export { EncoderService } from './encoder.service';
+export { FrameworkService } from './framework.service';
+export { MessageService } from './message.service';
+export { ModalService } from './modal.service';
+export { PreferencesUrlsService } from './preferences-urls.service';
+export { RootSiteService } from './root-site.service';
+export { SettingsService } from './settings.service';
+export { SitePreferenceService } from './sitepreference.service';
+export { SplashscreenService } from './splashscreen.service';
+export { StorageService } from './storage.service';
+export { ROOT_SITE_ID, ConfigurationsInjectionService, ActiveContextService } from './tokens';
+export { UserService } from './user.service';
+export { UserPreferenceService } from './userpreference.service';
+export { WidgetstoreService } from './widgetstore.service';
+export { WindowToken, windowProvider } from './window.service';
+
+// Mocks
+export { mockAdalService } from './adal.service.mock';
+export { mockApiService } from './api.service.mock';
+export { mockAppInsightsService } from './app-insights.service.mock';
+export { mockAppService } from './app.service.mock';
+export { mockConfigurationService } from './configuration.service.mock';
+export { mockFrameworkService } from './framework.service.mock';
+export { mockSitePreferencesService } from './sitePreferences.mock';
+export { mockSplashScreenService } from './splashscreen.service.mock';
+export { mockStorageService } from './storage.service.mock';
+export { mockUserService } from './user.service.mock';
+export { mockUserPreferenceService } from './userpreference.service.mock';
+export { mockWidgetstoreService } from './widgetstoreservices.mock';

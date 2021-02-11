@@ -1,0 +1,132 @@
+.org-items {
+  font-size: 16px;
+  margin-left: 30px;
+  display: flex;
+  > i {
+    color: #3f4257;
+  }
+}
+
+.fw-dragula {
+  // .fa-minus-circle {
+  //   color: #df3416;
+  //   font-size: 18px;
+  // }
+  // .delete-tab {
+  //   position: absolute;
+  //   top: 18px;
+  // }
+
+  .drag-bar {
+    > div {
+      width: 30px;
+      height: 2px;
+      background-color: #c7c7cc;
+      margin: 4px 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+.addnew-tab {
+  .add-tab {
+    color: #fff;
+    font-size: 18px;
+    background-color: #36b81a;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 16px;
+    bottom: 17px;
+    top: 2px;
+    font-weight: 600;
+  }
+}
+.org-info-section {
+  background-color: #f4fbff;
+  font-size: 15px;
+  color: #333333;
+}
+
+.organize-tab-save {
+  position: absolute;
+  z-index: 1;
+  right: 15px;
+  .btn {
+    min-width: 93px;
+    height: 34px !important;
+    font-size: 14px;
+  }
+}
+//reorder drag css
+.reorder-drag{
+  cursor: move;
+}
+.cdk-drag-preview {
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  min-height: 60px;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.reorder-drag:last-child {
+  border: none;
+}
+
+.fw-dragula.cdk-drop-list-dragging .reorder-drag:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+//reorder drag css
+
+
+::ng-deep{
+  .cdk-drag .fa-minus-circle {
+    color: #df3416;
+    font-size: 18px;
+  }
+  .cdk-drag .delete-tab {
+    position: absolute;
+    top: 4px;
+    left: 3px;
+  }
+  .cdk-drag .drag-bar {
+    position: relative;
+    right: 3px;
+    > div {
+      width: 30px;
+      height: 2px;
+      background-color: #c7c7cc;
+      margin: 4px 0;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 575px) {
+  .organize-tab-save {
+    left: auto;
+    top: 32px;
+  }
+}

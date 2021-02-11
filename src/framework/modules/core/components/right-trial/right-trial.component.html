@@ -1,0 +1,23 @@
+<div class="add-widget-layer" [ngClass]="{'sidebar-open': toggleSetting, 'fit-screen': fitScreen}">
+  <div class="trail-header">
+    <div class="d-flex justify-content-between">
+      <div class="trail-header-title">{{rightNavTitle}}</div>
+      <div>
+        <ul class="d-flex align-items-center">
+          <li class="mr-3 d-none d-sm-inline-block">
+            <a href="javascript:;" (click)="fitScreen = !fitScreen">
+              <i class="fas fa-arrows-alt-h" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;" class="close-settings" (click)="toggleSettings()"><i class="fas fa-times"
+                aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="trail-body">
+    <ng-container *ngIf="toggleSetting && currentComponent" [ngComponentOutlet]="currentComponent" [ndcDynamicInputs]="{defaults: compInput}" ></ng-container>
+  </div>
+</div>

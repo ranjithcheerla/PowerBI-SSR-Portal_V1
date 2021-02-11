@@ -1,0 +1,79 @@
+@import "~framework/assets/css/sassimport.scss";
+.aw-list-group {
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+  .aw-col {
+    @extend %widget-card-style;
+    margin-right: -15px;
+    .aw-txt-added {
+      color: rgb(25, 190, 25);
+    }
+  }
+  .ws-title {
+    font-size: $title-font-md;
+    color: $bodyTextColor;
+  }
+}
+.aw-category {
+  width: 220px;
+  border: 0;
+  min-height: 100%;
+  padding: 0;
+  border-right: 1px solid #edecec;
+
+  .aw-category-list {
+    li {
+      display: block;
+      position: relative;
+
+      a {
+        padding: 10px 30px 10px 20px;
+        display: block;
+        cursor: pointer;
+        font-size: $font-md;
+        color: $bodyTextColor;
+        border-left: 2px solid transparent;
+      }
+
+      &.active {
+        a {
+          color: #48535c;
+          background: #f0f2f8;
+          font-weight: bold;
+          border-color: #4598d0;
+        }
+
+        .icon-accordion {
+          display: block;
+        }
+      }
+
+      .icon-accordion {
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        transform: rotate(-90deg);
+        display: none;
+      }
+    }
+  }
+}
+
+@include mq-desktop-above {
+  .aw-col {
+    max-width: 250px;
+  }
+}
+
+@include mq-phone-only {
+  .aw-list-top-sec {
+    width: 100%;
+  }
+  .aw-title {
+    margin: 0;
+  }
+  .aw-list-group {
+    margin-bottom: 15px !important;
+  }
+}

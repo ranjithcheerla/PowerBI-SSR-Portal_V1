@@ -1,0 +1,65 @@
+.cf-btn {
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-width: 1px;
+  font-size: 12px;
+  letter-spacing: 0.75px;
+  padding: 12px 24px;
+  line-height: 18px;
+  &.btn-xs {
+    padding: 8px 12px;
+    font-size: 11px;
+    line-height: 14px;
+  }
+  &.btn-lg {
+    padding: 16px 32px;
+    letter-spacing: 0.5px;
+  }
+  &.btn-primary {
+    background-color: $cf-color-link;
+    color: $cf-btn-bg-white;
+    border-color: $cf-color-link;
+    &:hover {
+      background-color: $cf-btn-hover-color;
+      border-color: $cf-btn-hover-color;
+    }
+    &[disabled] {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.16);
+      border-color: transparent;
+    }
+    i {
+      color: $cf-btn-bg-white;
+    }
+  }
+  &.btn-link {
+    border: 0;
+    background: none;
+    color: $cf-color-link;
+    &[disabled] {
+      opacity: 1;
+      color: rgba(0, 0, 0, 0.16);
+    }
+  }
+  &.btn-outline-primary {
+    background-color: $cf-btn-bg-white;
+    color: $cf-color-link;
+    border-color: $cf-color-link;
+    &:hover {
+      background-color: $cf-btn-hover-bg;
+      border-color: $cf-btn-hover-color;
+      color: $cf-btn-hover-color;
+    }
+    &[disabled] {
+      opacity: 1;
+      color: rgba(0, 0, 0, 0.16);
+      border-color: rgba(0, 0, 0, 0.16);
+      &:hover {
+        background-color: $cf-btn-bg-white;
+        color: rgba(0, 0, 0, 0.16);
+        border-color: rgba(0, 0, 0, 0.16);
+      }
+    }
+  }
+}

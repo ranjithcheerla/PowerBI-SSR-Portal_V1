@@ -1,0 +1,38 @@
+.flexbox-container {
+  display: flex;
+
+  .pageBanner {
+    margin-bottom: 15px;
+  }
+}
+
+.drag-preview{
+  background-color: #fafdff;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.08);
+  width: 300px;
+  border-radius: 4px;
+  .drag-preview-heading{
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+
+
+/*
+@media (max-width: 1020px) {
+  .flexbox-container.row {
+    margin: 0;
+  }
+}*/
+
+@media (max-width: 767px) {
+  .widget-panel {
+    &.L1P1.empty {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+}

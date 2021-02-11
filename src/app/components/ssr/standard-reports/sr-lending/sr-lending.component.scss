@@ -1,0 +1,40 @@
+.page-tab{
+    margin-bottom: 2px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    margin-bottom: 15px;
+  }
+
+  .page-tab li{
+      display: inline-block;
+  }
+
+  .page-tab li + li{
+      margin-left: 5px;
+  }
+
+  .page-tab li a{
+      display: inline-block;
+      padding: 10px 15px;
+      color: #0071BC;
+      font-weight: 600;
+      font-size: 14px;
+      border-width: 0 0 3.5px 0;
+      border-color: transparent;
+      border-style: solid;
+  }
+  .page-tab li a.activeTab{
+      border-color: #0071BC;
+  }
+  .footer-link {
+    font-size: 10px;
+    letter-spacing: 0.75px;
+  }
+  .operation-products .card .footer-link {
+    color: #0071bc;
+    font-size: 10px;
+    position: absolute;
+    text-transform: uppercase;
+    bottom: 18px;
+    right: 18px;
+    letter-spacing: 0.75px;
+  }

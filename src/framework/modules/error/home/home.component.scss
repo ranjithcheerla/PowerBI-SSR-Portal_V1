@@ -1,0 +1,104 @@
+.page-notfound-wrapper {
+  text-align: center;
+  margin: 10%;
+  max-width: 220px;
+  font-size: 14px;
+}
+
+.page-notfound {
+  color: #000;
+  font-weight: 600;
+  margin: 15px 0;
+  position: relative;
+
+  &:after {
+    content: '';
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 80%;
+    border-bottom: 1px dashed #acacac;
+    bottom: -9px;
+    left: 10%;
+  }
+}
+
+.access-denied {
+  text-align: center;
+  margin: 10% 0 0;
+  color: #29303D;
+  max-width: 500px;
+  font-size: 14px;
+
+  .title {
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 36px;
+  }
+}
+
+$lockWidth: 30px;
+$lockHeight: 38px;
+
+.lock-cirlce {
+  width: $lockWidth + 28;
+  height: $lockHeight + 20;
+  background-color: #b7b7b7;
+  text-align: center;
+  border-radius: 50%;
+  padding-top: 10px;
+  margin: auto;
+}
+
+.cf-lock-icon {
+  position: relative;
+  text-align: center;
+  width: $lockWidth;
+  height: $lockHeight;
+  display: inline-block;
+
+  .lock-top {
+    width: $lockWidth * 0.725;
+    height: $lockHeight * 0.666;
+    position: absolute;
+    border: 5px solid #eaeaea;
+    border-radius: $lockWidth/2;
+    background-color: transparent;
+    top: 0;
+    left: 4px;
+  }
+
+  .lock-body {
+    width: $lockWidth;
+    height: $lockHeight * 0.625;
+    position: absolute;
+    background-color: #fff;
+    border-bottom-left-radius: $lockHeight * 0.625;
+    border-bottom-right-radius: $lockHeight * 0.625;
+    bottom: 0;
+  }
+
+  .lock-cross {
+    top: 50%;
+    margin-left: -1px;
+    left: 50%;
+    position: absolute;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 13px;
+      background-color: #b7b7b7;
+      top: 0;
+      border-radius: 9px;
+      transform: rotate(-45deg);
+    }
+
+    &:after {
+      transform: rotate(45deg);
+    }
+  }
+}

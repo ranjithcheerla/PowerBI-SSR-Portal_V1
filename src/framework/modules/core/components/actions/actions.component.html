@@ -1,0 +1,55 @@
+<ng-container *ngIf="isPopover">
+  <a href="javascript:;" class="nav-link" [ngClass]="{ active: popActions }" [popover]="actions" placement="bottom"
+    container="body" containerClass="actions-popover" [outsideClick]="true" #popover="bs-popover"
+    (onShown)="togglePopup(true)" (onHidden)="togglePopup(false)">ACTIONS<span class="h-arrow"></span></a>
+</ng-container>
+<!-- The below code should be enabled after UXM team flatten this HTML. As of now, Actions is not displaying in responsive mode -->
+<ng-container *ngIf="!isPopover" [ngTemplateOutlet]="actions"></ng-container>
+
+<ng-template #actions>
+  <button type="button" class="close close-btn" aria-label="Close" (click)="closePopoverOrMenu()" *ngIf="isPopover">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <ng-container [ngTemplateOutlet]="actionPopTemplate"></ng-container>
+</ng-template>
+
+<!-- action popover template starts -->
+<ng-template #actionPopTemplate>
+  <div *ngIf="headers$ | async as header" class="my-sm-4 my-3">
+    <ul class="actions-list">
+      <li *ngIf="header.adminLink">
+        <a (click)="navigateToAdminPageUrl()" href="javascript:;">Admin</a>
+      </li>
+      <li *ngIf="header.pageRefresh">
+        <a (click)="pageRefresh()" href="javascript:;">Page Refresh</a>
+      </li>
+      <li *ngIf="header.addPages">
+        <a routerLink="capabilities" [queryParams]="widgetStorePath" (click)="closePopoverOrMenu()">Add Page</a>
+      </li>
+      <li *ngIf="header.addWidget">
+        <a (click)="openWidgetStore()" class="inpagestore" href="javascript:;">
+          Add Widget
+        </a>
+      </li>
+      <li *ngIf="header.resetWidget">
+        <a href="javascript:;" (click)="confirmPageReset(resetTemplate)">Reset</a>
+      </li>
+    </ul>
+    <ng-container *ngIf="customActionsComponent !== null && customActionsComponent !== undefined"
+      [ngComponentOutlet]="customActionsComponent" [ndcDynamicInputs]="{defaults: compInput}"></ng-container>
+  </div>
+</ng-template>
+<!-- action popover template ends-->
+
+<ng-template #resetTemplate>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-exclamation-circle error-color" aria-hidden="true"></i></div>
+      <div>Do you want to reset this page?</div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn" (click)="resetPage()">CONTINUE</button>
+  </div>
+</ng-template>

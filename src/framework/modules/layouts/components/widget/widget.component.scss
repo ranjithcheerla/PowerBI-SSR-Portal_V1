@@ -1,0 +1,232 @@
+@import '~framework/assets/css/sassimport.scss';
+
+.widget-card {
+  margin-bottom: 24px;
+  padding: 18px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: 0.2s linear;
+  &:hover {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    .widgetconfig {
+      .fa-ellipsis-v,
+      .fa-angle-down {
+        color: #666;
+      }
+    }
+  }
+}
+.widget-more-btn,
+.widget-collapse-btn {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+.widgetconfig {
+  margin: 4px 0 0 0;
+  .fa-ellipsis-v,
+  .fa-angle-down {
+    color: #ccc;
+    font-size: 13px;
+    transition: all 0.2s ease-in-out;
+  }
+  .fa-angle-down {
+    font-size: 16px;
+  }
+  .widget-collapse-btn {
+    &.collapsed {
+      .fa-angle-down {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+}
+.widget-header {
+  position: relative;
+  &.is-draggable{
+    &:hover {
+      cursor: move;
+    }
+  }
+}
+.widget-heading {
+  color: rgba(0, 0, 0, 0.87);
+  font-family: $fontAndes;
+  font-size: 20px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  a,
+  a:active,
+  a:focus {
+    outline: none;
+  }
+  .highlight-count {
+    background: #e05d6f;
+    color: #fff;
+    padding: 0 4px;
+    border-radius: 10px;
+    font-size: 11px;
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    top: 0;
+    left: 5px;
+    min-width: 32px;
+    height: 23px;
+    vertical-align: top;
+    text-align: center;
+  }
+  .edit-title {
+    input.form-control {
+      padding: 4px 10px 0;
+      line-height: 1;
+      height: 30px;
+      border: 1px solid rgba(0, 0, 0, 0.42);
+      border-radius: 2px;
+    }
+    .btn-link {
+      line-height: 1;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+  .fa-pencil-alt,
+  .fa-check,
+  .fa-times {
+    color: #0071bc;
+    font-size: 14px;
+  }
+  .fa-question-circle {
+    color: #0071bc;
+    font-size: 16px;
+  }
+  .fa-pencil-alt,
+  .fa-question-circle {
+    position: relative;
+    top: -2px;
+  }
+}
+
+::ng-deep {
+  .dropdown-menu.widget-option-dd {
+    z-index: 9;
+    font-size: 13px;
+    border: 0.5px solid rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    min-width: 236px;
+    max-width: 236px;
+    padding: 16px;
+    border-radius: 0;
+    margin-right: -32px;
+    margin-top: 10px;
+
+    .dropdown-item {
+      padding: 10px 0;
+      color: rgba(0, 0, 0, 0.87);
+      font-size: 14px;
+      letter-spacing: 0.25px;
+      line-height: 19px;
+      border-top: 1px solid rgba(0, 0, 0, 0.16);
+      i {
+        color: #666666;
+      }
+      &:hover {
+        background: transparent;
+      }
+    }
+    li {
+      &:first-child {
+        .dropdown-item {
+          border-top: 0;
+        }
+      }
+    }
+  }
+
+  .visible-on-trail {
+    display: none;
+    padding-top: 8px;
+  }
+  .L1P2,
+  .L6P1,
+  .L6P3 {
+    .widget-card {
+      padding: 16px;
+    }
+    .widget-heading {
+      font-size: 18px;
+      line-height: 26px;
+    }
+    .visible-on-trail {
+      display: block;
+    }
+    .hidden-on-trail {
+      display: none;
+    }
+  }
+  @media (max-width: 575px) {
+    .visible-on-trail {
+      display: block;
+    }
+    .hidden-on-trail {
+      display: none;
+    }
+  }
+}
+
+// ERROR WIDGET STYLES STARTS
+.cfalerts {
+  margin-bottom: 15px;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  line-height: 16px;
+  background: #e5f7ff;
+  border-left: 4px solid #169af3;
+  position: relative;
+  &.warning {
+    background: #fff6e6;
+    border-color: #e69600;
+    .cfalert-icon {
+      background-color: #e69600;
+    }
+  }
+  &.info {
+    background-color: #e5f7ff;
+    border-color: #169af3;
+    .cfalert-icon {
+      background-color: #169af3;
+    }
+  }
+  &.error {
+    background-color: #fceae8;
+    border-color: #e84228;
+    .cfalert-icon {
+      background-color: #e84228;
+    }
+  }
+  .cfalert-icon {
+    padding: 8px 6px 8px 2px;
+    margin-right: -8px;
+    color: #fff;
+    font-size: 15px;
+    background-color: #169af3;
+  }
+  .media-body {
+    padding: 8px 36px 8px 16px;
+  }
+  .error-text {
+    color: rgba(0, 0, 0, 0.87);
+  }
+  .cfalert-close {
+    color: #645d5c;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    font-size: 16px;
+  }
+}

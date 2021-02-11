@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card p-3">
+      This is demo of full page module, which gives App teams to render the content which they intended.
+      <div class="col mt-3 pl-0">
+        <button class="btn btn-primary mr-4 cf-btn" (click)="openModal(templatealert)">Modal</button>
+        <button class="btn btn-primary mr-4 cf-btn" (click)="opensuccessmodal(templatesucess)">Success Alert</button>
+        <button class="btn btn-primary mr-4 cf-btn" (click)="openerrormodal(templateerror)">Error Alert</button>
+        <button class="btn btn-primary mr-4 cf-btn" (click)="openerrormodalLarge(templateerrorLarge)">Error Alert
+          Large</button>
+
+          <button class="btn btn-primary mr-4 cf-btn" (click)="updateLeftNav()">Custom Left Nav</button>
+          <button class="btn btn-primary mr-4 cf-btn" (click)="openRightTrial()">Open rigth trial</button>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="card mt-3">
+  <h5 class="card-header">Font Awesome icons</h5>
+  <div class="card-body">
+    <a href="https://fontawesome.com/icons?d=listing&m=free" target="_blank">Available free font awesome icons</a>
+  </div>
+</div>
+
+<ng-template #templatealert>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Information</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">Just a modal with a bunch of words inside, nothing serious.</div>
+  <div class="modal-footer justify-content-center">
+    <button type="button" class="btn btn-primary btn-sm cf-btn" (click)="modalRef.hide()">Primary</button>
+  </div>
+</ng-template>
+
+<ng-template #templatesucess>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-check-circle success-color" aria-hidden="true"></i></div>
+      <div class="h3">Success message!</div>
+      <div>Critical alert message goes here.</div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn" (click)="modalRef.hide()">CONTINUE</button>
+  </div>
+</ng-template>
+
+<ng-template #templateerror>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-exclamation-circle error-color" aria-hidden="true"></i></div>
+      <div>Critical alert message goes here.</div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn" (click)="modalRef.hide()">CONTINUE</button>
+  </div>
+</ng-template>
+
+<ng-template #templateerrorLarge>
+  <div class="modal-body">
+    <div class="d-flex">
+      <div class="modal-icon-md"><i class="fas fa-exclamation-circle error-color" aria-hidden="true"></i></div>
+      <div class="ml-4">Critical alert message goes here.</div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-outline-primary btn-sm cf-btn" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-sm cf-btn" (click)="modalRef.hide()">CONTINUE</button>
+  </div>
+</ng-template>

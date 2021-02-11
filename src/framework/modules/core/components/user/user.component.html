@@ -1,0 +1,42 @@
+<ng-container *ngIf="isPopover">
+  <a href="javascript:;" [popover]="userProfilePop" class="nav-link pr-0" [ngClass]="{'active': popUser}"
+    containerClass="usermenu-popover" placement="bottom" [adaptivePosition]="false" container="body" [outsideClick]="true"
+    #pop3="bs-popover" (onShown)="popUser=true; popSettings=false" (onHidden)="popUser=false">
+    <div class="userpic make-elem-middle">
+      <img [appUserImage]="user.upi" alt="User Profile Image" />
+    </div>
+    <ng-template #userProfilePop>
+      <button type="button" class="close close-btn" aria-label="Close" (click)='pop3.hide()'>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ng-container [ngTemplateOutlet]="userProfile"></ng-container>
+    </ng-template>
+  </a>
+</ng-container>
+
+<ng-container *ngIf="!isPopover" [ngTemplateOutlet]="userProfile"></ng-container>
+
+<!--logout popover starts-->
+<ng-template #userProfile>
+  <div class="media usercard">
+    <div class="media-left mr-4">
+      <div class="userpic md">
+        <img [appUserImage]="user.upi" alt="User Profile Image" />
+      </div>
+    </div>
+    <div class="media-body">
+      <div class="media-heading mb-1">{{user.name}}</div>
+      <div class="userinfo">
+        <div>{{user.designation}}</div>
+        <div>Official Unit: {{user.unit}} </div>
+        <div>{{user.location}}</div>
+      </div>
+
+      <div class="text-right pt-4 ">
+        <button type="button" class="profile-btn btn btn-outline-primary" (click)="goToMyprofile()" *ngIf="showProfileButton">MY PROFILE</button>
+        <button type="button" class="signout-btn btn btn-primary ml-2" (click)="signout()" *ngIf="showSignoutButton">SIGNOUT</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<!--logout popover ends-->

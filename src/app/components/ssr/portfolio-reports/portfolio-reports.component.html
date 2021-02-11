@@ -1,0 +1,62 @@
+<div class="px-4 pt-2">
+
+  <div class="row">
+    <ng-container *ngFor="let item of portfiloReports">
+      <div class="col-md-4">
+        <h4 class="mb-4">{{item.group}}</h4>
+        <ul class="report-list pr-2" *ngFor="let report of item.reports">
+          <li>
+            <div class="d-flex justify-content-between text-md">
+              <a routerLink="/embed-report" (click)="selectedRpt(report)">{{report.displayName}}</a>
+              <a href="javascript:;" (click)="openModal(addFavorite,report)"><i
+                  class="far fa-star colorblack-42 text-md"></i></a>
+            </div>
+          </li>
+        </ul>
+        <br />
+      </div>
+    </ng-container>
+
+  </div>
+
+
+</div>
+
+<ng-template #addFavorite>
+  <div class="modal-header justify-content-between custom-header">
+    <h3 class=" font-weight-normal mb-3">Add to My Reports</h3>
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group lp-form-group">
+          <label><span class="lp-required">*</span> Label</label>
+          <div class="">
+            <input type="text" [(ngModel)]="saveRptName" placeholder="Give the report name to save"
+              class="form-control lp-form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-end pt-3 mb-3">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn mr-3" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn"
+      (click)="confirm();opensuccessModal(templatesucess)">SAVE</button>
+  </div>
+</ng-template>
+
+<ng-template #templatesucess>
+  <div class="modal-header justify-content-end custom-header">
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-check-circle success-color" aria-hidden="true"></i></div>
+      <div class="h3">Success!</div>
+      <div>Report Saved Successfully</div>
+      <div><a href="javascript:;" (click)="routeMyfav()">Click here to open the report.</a> </div>
+    </div>
+  </div>
+</ng-template>

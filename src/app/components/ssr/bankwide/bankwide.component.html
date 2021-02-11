@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-12">
+    <div class="d-flex justify-content-between">
+      <h2 class="andes fw-sbold mb-4">Bank-Wide</h2>
+      <div class="d-flex align-items-center mb-3 pb-1">
+        <button class="btn lp-btn report-btn btn-primary btn-lg text-uppercase d-flex align-items-center"
+          routerLink="/create-report">
+          <i class="report-sprite icon-plus-white mr-2"></i> Create Report</button>
+      </div>
+    </div>
+    <div class="card pt-2 px-3">
+      <!-- <div>
+          <ng-container [ngTemplateOutlet]="gridToolbar"></ng-container>
+        </div> -->
+      <tabset #staticTabs class="lp-tab-container lp-hscrollable">
+        <tab heading="Reports">
+          <app-my-favorite-reports workspace="12dcc80b-8af1-4701-8336-48fdce87a5dd"></app-my-favorite-reports>
+        </tab>
+        <tab heading="Analyze in Excel">
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #gridToolbar>
+  <div class="d-flex justify-content-end view-toolbar">
+    <ul class="grid-toolbar d-flex align-items-center">
+      <li>
+        <input placeholder="Search..." class="gt-searchbox" type="text" [(ngModel)]="searchTerm"
+          (ngModelChange)="doserach($event)" #inpSrcKwd />
+        <a class="report-sprite icon-search-dark" href="javascript:;" tooltip="Search" (click)="inpSrcKwd.focus();"
+          placement="bottom">
+        </a>
+      </li>
+      <!-- <li>
+          <div class="list-fullscreen d-none d-lg-block d-xl-block">
+            <a href="javascript:;" class="mt-2 ml-2" *ngIf="isListFullScreen" (click)="toggleFullScreen()">
+              <i class="fas fa-compress colorblack-60" containerClass="tooltip-nowrap" tooltip="Exit Full Screen"
+                placement="bottom"></i>
+            </a>
+            <a href="javascript:;" *ngIf="!isListFullScreen" (click)="toggleFullScreen()">
+              <i class="report-sprite icon-fullscreen" tooltip="Full Screen" container="body" placement="bottom"></i>
+            </a>
+          </div>
+        </li> -->
+      <!-- <li>
+          <div class="btn-group" dropdown placement="bottom right">
+            <a href="javascript:;" class="cl-filter-dd-btn" dropdownToggle>
+              <i class="report-sprite icon-ellipsis-h" containerClass="tooltip-nowrap" tooltip="Grid Actions"
+                placement="bottom"></i>
+            </a>
+            <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu dropdown-menu-right board-meeting grid-dropdown"
+              role="menu" aria-labelledby="button-animated">
+              <li role="menuitem"><a class="dropdown-item" href="javascript:;"><i class="br-sprite icon-pdf-sm mr-2"></i>
+                  Export to PDF</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="javascript:;"><i
+                    class="br-sprite icon-print-sm mr-2"></i>
+                  Print</a>
+              </li>
+  
+            </ul>
+          </div>
+        </li> -->
+    </ul>
+  </div>
+</ng-template>

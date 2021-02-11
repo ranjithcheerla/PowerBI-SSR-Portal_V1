@@ -1,0 +1,24 @@
+<div class="px-4 pt-2">
+
+  <div class="row">
+    <ng-container *ngFor="let item of excelReports">
+      <div class="col-md-4">
+        <h4 class="mb-4">{{item.key}}</h4>
+        <ul class="report-list pr-2" *ngFor="let report of item.values">
+          <li>
+            <div class="d-flex justify-content-between text-md">
+              <a href="{{report.embedUrl}}" target="_new"><i class="fas fa-file-excel mr-2"></i>
+                {{report.displayName}}</a>
+
+            </div>
+          </li>
+        </ul>
+        <br />
+      </div>
+    </ng-container>
+
+
+  </div>
+
+
+</div>

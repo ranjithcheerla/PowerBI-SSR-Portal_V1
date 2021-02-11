@@ -1,0 +1,342 @@
+<div class="container wrapper">
+  <div class="operation-products mt-2">
+    <div class="row">
+      <div class="col-lg-12 col-xl-9">
+        <div>
+          <h3 class="mb-2" style="margin-top: -1.5em; padding-top: 15px">
+            <span class="module-title">
+              Operations
+            </span>
+          </h3>
+          <div class="row mt-2">
+            <div class="col-sm-6 col-lg-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+              <div style="height: 400px;" class="card">
+                <!-- Product Header -->
+                <div id="lendingWdgtContainer" style="height:400px;width: 350px;"></div>
+
+                <a class="footer-link float-right fw-bold" href="javascript:;" (click)="lendingViewMore()">
+                  View More <span class="right-arrow ml-1"></span>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+              <div style="height: 400px;" class="card">
+                <!-- Product Header -->
+                <div id="portfolioWdgtContainer" style="height:400px;width: 350px;"></div>
+
+                <a class="footer-link float-right fw-bold" href="javascript:;" (click)="portfolioViewMore()">
+                  View More <span class="right-arrow ml-1"></span>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+              <div style="height: 400px;" class="card">
+                <!-- Product Header -->
+                <div id="asaWdgtContainer" style="height:400px;width: 350px;"></div>
+
+                <a class="footer-link float-right fw-bold" href="javascript:;" (click)="asaViewMore()">
+                  View More <span class="right-arrow ml-1"></span>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+              <div style="height: 400px;" class="card">
+                <!-- Product Header -->
+                <div id="cpfWdgtContainer" style="height:400px;width: 350px;"></div>
+
+                <a class="footer-link float-right fw-bold" href="javascript:;">
+                  View More <span class="right-arrow ml-1"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <h3>
+            <span class="module-title">
+              Fiduciary
+            </span>
+          </h3>
+          <div class="row mt-2">
+            <div class="col-sm-6 col-lg-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+              <div style="height: 400px;" class="card">
+                <!-- Product Header -->
+                <div id="safeguardsWdgtContainer" style="height:400px;width: 350px;"></div>
+
+                <a class="footer-link float-right fw-bold" href="javascript:;">
+                  View More <span class="right-arrow ml-1"></span>
+                </a>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+              <div style="height: 400px;" class="card">
+                <!-- Product Header -->
+                <div id="esfWdgtContainer" style="height:400px;width: 350px;"></div>
+
+                <a class="footer-link float-right fw-bold" href="javascript:;">
+                  View More <span class="right-arrow ml-1"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table of Contents for old SR -->
+          <div class="old-reports pt-4 mt-4">
+            <div class="reports-alert text-sm">
+              Below shown items are currently available in the old version of Standard Reports.
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-sm-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+                <div class="card card-shadow p-4 h-100">
+                  <h4 class="mb-3 pb-1 fw-sbold andes">Other Operations</h4>
+                  <ul class="card-list">
+                    <li><a href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/ras/"
+                        class="text-md"><i class="fas fa-hand-holding-usd"></i>RAS</a></li>
+                    <li><a
+                        href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/knowledgeproducts/"
+                        class="text-md"><i class="fas fa-book-reader"></i>Knowledge</a></li>
+                    <li><a
+                        href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/trustfunds/"
+                        class="text-md"><i class="fas fa-landmark"></i>Trust Funds</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-sm-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+                <div class="card card-shadow p-4 h-100">
+                  <h4 class="mb-3 pb-1 fw-sbold andes">Performance</h4>
+                  <ul class="card-list">
+                    <li><a
+                        href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/collaboration/"
+                        class="text-md"><i class="fas fa-users"></i>Collaboration</a></li>
+                    <li><a href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/risk/"
+                        class="text-md"><i class="fas fa-exclamation-triangle"></i>Risk</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+                <div class="card card-shadow p-4 h-100">
+                  <h4 class="mb-3 pb-1 fw-sbold andes">Topics</h4>
+                  <ul class="card-list">
+                    <li><a
+                        href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/sectorsandthemes/"
+                        class="text-md"><i class="fas fa-chart-pie"></i>Sectors & Themes</a></li>
+                    <li><a
+                        href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/gender/$fy~2021"
+                        class="text-md"><i class="fas fa-user-friends"></i>Gender</a></li>
+                    <li><a
+                        href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/infrastructure/$fy~2021$st~A"
+                        class="text-md"><i class="fas fa-hospital"></i>Infrastructure</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+                <div class="card card-shadow p-4 h-100">
+                  <h4 class="mb-3 pb-1 fw-sbold andes">Fiduciary</h4>
+                  <ul class="card-list">
+                    <li><a
+                        href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/procurement/"
+                        class="text-md"><i class="fas fa-cart-plus"></i>Procurement</a></li>
+                    <!-- <li><a href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/safeguards/" class="text-md"><i class="fas fa-shield-alt"></i>Safeguards</a></li>
+                              <li><a href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/esf/" class="text-md"><i class="fas fa-landmark"></i>Environmental & Social Framework</a>
+                              </li> -->
+                    <li><a
+                        href="http://operationsmonitoring.worldbank.org/view/index.html#path/{{browseByPath}}/financialmanagement/"
+                        class="text-md"><i class="fas fa-dollar-sign"></i>Financial Management</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-4 col-lg-4 mb-4 custom-pad">
+                <div class="card card-shadow p-4 h-100">
+                  <h4 class="mb-3 pb-1 fw-sbold andes">Others</h4>
+                  <ul class="card-list">
+                    <li><a href="https://hubs.worldbank.org/sites/hrreports/Pages/index.aspx" class="text-md"><i
+                          class="fas fa-user-tie"></i>HR</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 col-xl-3 mb-2 mt-2">
+        <div class="row">
+          <div class="col-sm-12 col-lg-12 col-xl-12 mb-4 custom-pad">
+            <div class="card h-100" id="favorites-card">
+              <div class="h-100 home-create-report p-4">
+                <div class="d-flex justify-content-between flex-column h-100">
+                  <span class="report-sprite icon-create-report mb-4"></span>
+                  <h5 class="text-uppercase text-lg fw-bold mb-3">Create Reports</h5>
+                  <div class="fs-14 mb-4 reports-txt">
+                    Choose type, refine, select attributes, and preview to generate a report.
+                  </div>
+                  <button class="btn btn-primary fs-14 text-uppercase fw-bold text-center get-start-btn">
+                    Get Started
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-lg-12 col-xl-12 mb-4 custom-pad">
+            <div class="card h-100" id="favorites-card">
+              <div class="topDivCSS h-100 home-page-myfavorite px-4 py-3">
+                <h6 class="mb-3 fw-bold">My Favorite Reports</h6>
+                <!-- <ul class="myfavorite-list fs-12">
+                            <li><a href="javascript:;">Report 1: Lorem ipsu Report 1: Lorem ipsum dolor sit amet, consectetur</a></li>
+                            <li><a href="javascript:;">Report 1: Lorem ipsu Report 1: Lorem ipsum dolor sit amet, consectetur</a></li>
+                            <li><a href="javascript:;">Report 1: Lorem ipsu Report 1: Lorem ipsum dolor sit amet, consectetur</a></li>
+                          </ul>
+                          <div class="pt-4 mt-4">
+                              <a class="footer-link my-favorite-home text-uppercase float-right fw-bold text-xs mt-0" href="javascript:;" (click)="manageFavoriteClick()">
+                                Manage Reports  <span class="right-arrow ml-1"></span>
+                              </a>
+                            </div> -->
+                <div class="d-flex justify-content-between flex-column h-100">
+                  <div>
+                    <tabset class="lp-tab-container lp-hscrollable">
+                      <tab heading="My Favorites">
+                        <div class="card-body">
+                          <div class="loadingCSS">
+                            <div class="sr-loader"></div>
+                          </div>
+                          <div class="mt-3 mb-3 text-center">
+                            <span><i class="fa fa-file-text-o mr-2" aria-hidden="true"></i></span>
+                            <span>No favorites yet</span>
+                          </div>
+                          <div class="favlist">
+                            <div *ngFor="let item of myFavoritesData | keyvalue; let i=index;"
+                              class="myfav-accor-header border-top">
+                              <div class="accor-header d-flex justify-content-between align-items-center py-2 my-1"
+                                [class.active]="myfaouriteAccordion[i] == true"
+                                (click)="myfaouriteAccordion[i] = !myfaouriteAccordion[i]">
+                                <h6> {{item.key}} ({{item.value.length}})</h6>
+                                <div> <i class="fas fa-chevron-down mr-1" aria-hidden="true"></i></div>
+                              </div>
+                              <ul class="childlist ml-0 p-0" *ngIf="myfaouriteAccordion[i]">
+                                <li *ngFor="let data of item.value"
+                                  class="pointerCSS d-flex justify-content-between align-items-center">
+                                  <span (click)="reportClick(data)">{{data.reportName}}</span>
+                                  <a tooltip="Share Report" (click)="shareReportClick(data, sharetemplate)">
+                                    <i class="fas fa-file-export"></i></a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </tab>
+                      <tab heading="Shared with me">
+                        <div class="card-body">
+                          <div class="loadingCSS" *ngIf="showSharedLoading">
+                            <div class="sr-loader"></div>
+                          </div>
+                          <div *ngIf="!isSharedfavoriteReportAvailable && !showSharedLoading"
+                            class="mt-3 mb-3 text-center">
+                            <span><i class="fa fa-file-text-o mr-2" aria-hidden="true"></i></span>
+                            <span style="text-align: center;">No Shared Reports</span>
+                          </div>
+                          <div class="favlist">
+                            <div *ngFor="let item of sharedWithMeFavoritesData | keyvalue; let i=index;"
+                              class="myfav-accor-header border-top">
+                              <div class="d-flex justify-content-between align-items-center py-2 my-1"
+                                [class.active]="mySharedfaouriteAccordion[i] == true"
+                                (click)="mySharedfaouriteAccordion[i] = !mySharedfaouriteAccordion[i]">
+                                <h6> {{item.key}} ({{item.value.length}})</h6>
+                                <div> <i class="fas fa-chevron-down mr-1" aria-hidden="true"></i></div>
+                              </div>
+                              <ul class="childlist ml-0 p-0" *ngIf="mySharedfaouriteAccordion[i]">
+                                <li *ngFor="let data of item.value"
+                                  class="pointerCSS d-flex justify-content-between align-items-center"
+                                  (click)="reportClick(data)">
+                                  {{data.reportName}}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </tab>
+                    </tabset>
+                  </div>
+                  <div *ngIf="!showLoading" class="mb-4">
+                    <a class="footer-link my-favorite-home text-uppercase float-right fw-bold text-xs"
+                      href="javascript:;">
+                      Manage Favorites
+                      <!-- <span class="right-arrow ml-1"></span> -->
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+
+              <ng-template #sharetemplate>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Share Report</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-link mr-2" (click)="modalRef.hide()">Cancel</button>
+                  <button type="button" class="btn btn-primary" (click)="shareClick()">Share</button>
+                </div>
+              </ng-template>
+
+            </div>
+          </div>
+        </div>
+        <div class="information-card">
+          <div class="row flex-row flex-xl-column">
+            <div class="col-sm-12 col-lg-12 col-xl-12 mb-4 custom-pad">
+              <div class="card h-100">
+                <h4 class="fw-bold mb-1">Learning and Resources</h4>
+                <p class="fs-12"><span>Get the most out of Standard Reports by using these links:</span></p>
+                <ul>
+                  <li>
+                    <!-- <a (click)="resourceURLClick(item.url)"><span [className]=""></span>title</a> -->
+                    <a href="http://globalpractices.worldbank.org/operations/Documents/Standard%20Reporting%20Catalog.pdf"
+                      target="_blank">
+                      <span class="sr-sprite icon-faq mr-2"></span> Catalog
+                    </a>
+                  </li>
+                  <li>
+                    <!-- <a (click)="resourceURLClick(item.url)"><span [className]=""></span>title</a> -->
+                    <a href="http://globalpractices.worldbank.org/operations/Documents/Standard%20Reporting%20Glossary.pdf"
+                      target="_blank">
+                      <span class="sr-sprite icon-msg mr-2"></span> Glossary
+                    </a>
+                  </li>
+                  <li>
+                    <!-- <a (click)="resourceURLClick(item.url)"><span [className]=""></span>title</a> -->
+                    <a href="https://worldbankgroup.sharepoint.com/sites/wbunits/opcs/Pages/pc/World-Bank-Operations-Codes-Sectors-and-Themes-Product-Codes-08272018-170452/Operations-Code-09112018-170305.aspx"
+                      target="_blank">
+                      <span class="sr-sprite icon-rocket mr-2"></span> Sectors & Themes
+                    </a>
+                  </li>
+                  <li>
+                    <!-- <a (click)="resourceURLClick(item.url)"><span [className]=""></span>title</a> -->
+                    <a href="https://web.yammer.com/main/feed" target="_blank">
+                      <span class="sr-sprite icon-tips mr-2"></span> Tips & FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <!-- <a (click)="resourceURLClick(item.url)"><span [className]=""></span>title</a> -->
+                    <a href="https://web.yammer.com/main/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIxNTUzNjMwMiJ9/all"
+                      target="_blank">
+                      <span class="sr-sprite icon-yammer mr-2 ml-2 mt-1"></span> Yammer
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

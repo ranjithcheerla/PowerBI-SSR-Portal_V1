@@ -1,0 +1,80 @@
+@import "~framework/assets/css/sassimport.scss";
+.fa-search {
+  font-size: 16px;
+}
+.fa-times {
+  font-size: 19px;
+}
+.header-search {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  display: none;
+  padding-left: 15px;
+  &.in {
+    display: block;
+    animation: fadeInLeft 0.36s cubic-bezier(0.32, 0.08, 0.24, 1);
+  }
+}
+.search-box,
+.search-box:focus,
+.search-box:active {
+  border: 0;
+  outline: none;
+  line-height: map-get($header-height, lg);
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  padding: 0 0 0 15px;
+  width: 100%;
+  background: transparent;
+}
+.search-btn {
+  line-height: map-get($header-height, lg);
+  padding: 0 15px;
+  > span {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+}
+
+.search-suggestion {
+  width: calc(100% - 60px);
+  background: #f3f3f3;
+  height: 206px;
+  position: absolute;
+  padding: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@include mq-tablet-landscape-below {
+  .search-suggestion {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@include mq-phone-only {
+  .search-btn {
+    line-height: map-get($header-height, sm);
+    padding: 0 15px !important;
+  }
+  .search-box,
+  .search-box:focus,
+  .search-box:active {
+    line-height: map-get($header-height, sm);
+  }
+}

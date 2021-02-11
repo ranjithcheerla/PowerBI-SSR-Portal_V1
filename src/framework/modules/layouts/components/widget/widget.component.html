@@ -1,0 +1,129 @@
+<div class="widget-card" *ngIf="!isHidden" [ngStyle]="widgetStyles">
+  <div class="widget-body">
+    <div class="widget-header" cdkDragHandle *ngIf="showWidgetHeader"
+      [ngClass]="{'mb-3': !isCollapsed, 'is-draggable': isDraggable}">
+      <div class="d-flex justify-content-between">
+        <div class="w-100 pr-2 d-flex justify-content-between flex-wrap">
+          <ng-container *ngIf="!isCollapsed || !summaryComponent">
+            <div class="widget-heading">
+              <div *ngIf="widgetIcon" class="align-self-start">
+                <i class="{{widgetIcon}} mr-2" aria-hidden="true"></i>
+              </div>
+              <div>
+                <ng-container *ngIf="!editWidgetTitle">{{widgetTitle}}</ng-container>
+                <ng-container *ngIf="editWidgetTitle">
+                  <div class="input-group edit-title">
+                    <input type="text" class="form-control" placeholder="Widget Title" aria-label="Widget Title"
+                      [value]="widgetTitle" #title>
+                    <div class="input-group-append ml-1">
+                      <button class="btn btn-link btn-sm save" (click)="saveModifiedTitle(title.value)" type="button">
+                        <i class="fas fa-check" aria-hidden="true"></i>
+                      </button>
+                      <button class="btn btn-link btn-sm cancel" type="button" (click)="editWidgetTitle = false"><i
+                          class="fas fa-times" aria-hidden="true"></i></button>
+                    </div>
+                  </div>
+                </ng-container>
+                <a *ngIf="showEditTitleIcon && !editWidgetTitle" href="javascript:;" (click)="editTheTitle()">
+                  <i class="fas fa-pencil-alt ml-2" aria-hidden="true"></i>
+                </a> <span *ngIf="showCount" class="highlight-count mr-2">{{count}}</span>
+                <a *ngIf="showCustomHelpIcon" href="javascript:;" (click)="customHelpIconClick()">
+                  <i class="far fa-question-circle ml-2" aria-hidden="true"></i>
+                </a>
+                <a *ngIf="helpIcon" href="javascript:;" [popover]="popHelpTemplate" placement="bottom"
+                  containerClass="helpPopover" [outsideClick]="true" popoverTitle="Title" class="mx-2">
+                  <i class="far fa-question-circle" aria-hidden="true"></i>
+                </a>
+                <ng-template #popHelpTemplate>
+                  <div>
+                    {{helpText}}
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+            <div class="ml-2 hidden-on-trail" *ngIf="titleBarRightComponent">
+              <ng-container [ngComponentOutlet]="titleBarRightComponent"
+                [ndcDynamicInputs]="{widgetConfig: inputData.widgetconfig, page: pageName, panel: panel, widget: compName}">
+              </ng-container>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="summaryComponent && isCollapsed">
+            <div>
+              <ng-container [ngComponentOutlet]="summaryComponent"
+                [ndcDynamicInputs]="{widgetConfig: inputData.widgetconfig, page: pageName, panel: panel, widget: compName}">
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+        <div class="widgetconfig d-flex">
+          <!--widget config component-->
+          <ng-container *ngIf="!isCollapsed || !summaryComponent">
+            <a dropdown #dropdown="bs-dropdown" class="widget-more-btn" [autoClose]="true" dropdownToggle
+              placement="bottom right" container="body">
+              <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+              <ul *dropdownMenu class="dropdown-menu dropdown-menu-right widget-option-dd" role="menu">
+                <ng-container *ngIf="customWidgetConfigComponent" [ngComponentOutlet]="customWidgetConfigComponent"
+                  [ndcDynamicInputs]="{widgetConfig: inputData.widgetconfig, page: pageName, panel: panel, widget: compName,
+                      dropdown: dropdown}"></ng-container>
+                <li role="menuitem"><a class="dropdown-item" (click)="removeWidget()">
+                    <i class="fas fa-minus-circle mr-2" aria-hidden="true"></i>Remove Widget</a>
+                </li>
+              </ul>
+            </a>
+          </ng-container>
+          <a class="ml-1" (click)="toggleCollapse()" class="widget-collapse-btn ml-1"
+            [ngClass]="{'collapsed': isCollapsed}">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </a>
+          <!--widget config component-->
+        </div>
+      </div>
+      <div class="visible-on-trail" *ngIf="titleBarRightComponent">
+        <ng-container [ngComponentOutlet]="titleBarRightComponent"
+          [ndcDynamicInputs]="{widgetConfig: inputData.widgetconfig, page: pageName, panel: panel, widget: compName}">
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="widget-content" [collapse]="isCollapsed">
+      <ng-container *ngIf="showWidgetError">
+        <div class="cfalerts {{widgetError.type}}">
+          <div class="media">
+            <div class="cfalert-icon d-flex align-items-center align-self-stretch">
+              <i class="fas fa-exclamation-circle" aria-hidden="true" *ngIf="widgetError.type != 'info'"></i>
+              <i class="fas fa-info-circle" aria-hidden="true" *ngIf="widgetError.type == 'info'"></i>
+            </div>
+            <div class="media-body d-flex align-items-center align-self-stretch">
+              <div class="error-text w-100">
+                {{widgetError.message}}
+                <a href="javascript:;" class="cfalert-close" *ngIf="widgetError.type != 'error'"
+                  (click)="widgetError.message=''"><i class="fas fa-times" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!hideLoader">
+        <app-comp-spinner-user></app-comp-spinner-user><br />
+        <app-comp-spinner-user></app-comp-spinner-user><br />
+        <app-comp-spinner-user></app-comp-spinner-user><br />
+      </ng-container>
+      <ng-container [ngComponentOutlet]="angComponent"
+        [ndcDynamicInputs]="{widgetData: widgetData, widgetConfig: inputData.widgetconfig, page: pageName, panel: panel, widget: compName, event: inputData.event, content: inputData.content}"
+        [ndcDynamicOutputs]="outputData"></ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #removeWidgetTemplate>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-exclamation-circle error-color" aria-hidden="true"></i></div>
+      <div>Do you want to remove this widget?</div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn" (click)="removeWidgetFromPage()">CONTINUE</button>
+  </div>
+</ng-template>

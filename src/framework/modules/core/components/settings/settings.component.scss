@@ -1,0 +1,210 @@
+@import '~framework/assets/css/sassimport.scss';
+.control-settings {
+  color: rgba(0, 0, 0, 0.87);
+  &.sidebar-open {
+    right: 0;
+    display: block;
+    opacity: 1;
+  }
+  .card-title {
+    display: block;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 600;
+    padding: 20px;
+    border-bottom: 1px solid #e8e9f0;
+  }
+  .card-body {
+    padding: 0;
+  }
+  .list-group.simple-list .list-group-item {
+    border: none;
+    margin: 0;
+    border-bottom: 1px solid #e8e9f0;
+    span {
+      color: rgba(0, 0, 0, 0.42);
+      letter-spacing: 0.5px;
+    }
+  }
+  .control-sidebar-heading {
+    font-weight: 600;
+    padding: 10px 0;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.87);
+  }
+}
+
+.restore-link {
+  color: #0071bd !important;
+  cursor: pointer !important;
+  letter-spacing: 0.5px;
+  i {
+    color: #b6bbc2;
+  }
+}
+
+.themebox {
+  width: 40px;
+  height: 35px;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.14);
+  margin-right: 20px;
+  position: relative;
+  overflow: hidden;
+  .t-tick {
+    position: absolute;
+    top: 16px;
+    left: 22px;
+    display: none;
+    &:after {
+      opacity: 1;
+      height: 11px;
+      width: 6px;
+      border-right: 2px solid #2d9a4a;
+      border-top: 2px solid #2d9a4a;
+      content: '';
+      position: absolute;
+      transform: scaleX(-1) rotate(135deg);
+    }
+  }
+  &.active {
+    .t-tick {
+      display: block;
+    }
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  &:before {
+    width: 10px;
+    height: 100%;
+    box-shadow: 1px 0 1px rgba(0, 0, 0, 0.1);
+  }
+  &:after {
+    height: 10px;
+    width: 100%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+  &.theme1 {
+    &:before {
+      background-color: map-get(map-get($theme1, 'leftnav'), 'background');
+    }
+    &:after {
+      background-color: map-get(map-get($theme1, 'header'), 'background');
+    }
+  }
+  &.theme2 {
+    &:before {
+      background-color: map-get(map-get($theme2, 'leftnav'), 'background');
+    }
+    &:after {
+      background-color: map-get(map-get($theme2, 'header'), 'background');
+    }
+  }
+  &.theme3 {
+    &:before {
+      background-color: map-get(map-get($theme3, 'leftnav'), 'background');
+    }
+    &:after {
+      background-color: map-get(map-get($theme3, 'header'), 'background');
+    }
+  }
+  &.theme4 {
+    &:before {
+      background-color: map-get(map-get($theme4, 'leftnav'), 'background');
+    }
+    &:after {
+      background-color: map-get(map-get($theme4, 'header'), 'background');
+    }
+  }
+  &.theme5 {
+    &:before {
+      background-color: map-get(map-get($theme5, 'leftnav'), 'background');
+    }
+    &:after {
+      background-color: map-get(map-get($theme5, 'header'), 'background');
+    }
+  }
+}
+
+/*buttons*/
+.reset-button {
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 2px;
+  letter-spacing: 0.75px;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+.btn {
+  font-size: 11px;
+  font-weight: bold;
+  height: 32px !important;
+  border-radius: 2px;
+  letter-spacing: 0.75px;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+.btn.btn-outline-primary {
+  color: #0071bd;
+  border: 1px solid #147cc2;
+  background: #fff;
+}
+
+.simple-list .custom-radio .custom-control-input:checked ~ .custom-control-label:before {
+  border-color: #0071bd;
+}
+.simple-list .custom-radio .custom-control-input:checked ~ .custom-control-label:after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%230071bd'/%3E%3C/svg%3E");
+}
+.simple-list .custom-control-label {
+  padding-left: 10px;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 12px;
+  &:before,
+  &:after {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.fw-version {
+  font-size: 12px;
+  color: #666;
+  padding: 12px 20px;
+  text-align: right;
+}
+
+@media (max-width: 1020px) {
+  .control-settings {
+    width: 337px;
+    top: 9px;
+    .card-title {
+      padding: 20px 15px 0px !important;
+      border-bottom: none;
+    }
+  }
+  .list-group.simple-list .list-group-item {
+    padding: 0px 15px 10px 15px !important;
+  }
+}
+@media (max-width: 575px) {
+  .control-settings {
+    width: 337px;
+    top: -6px;
+    z-index: 2021;
+    box-shadow: none;
+    height: 100%;
+    border: 0;
+  }
+}

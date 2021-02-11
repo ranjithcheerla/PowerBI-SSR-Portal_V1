@@ -1,0 +1,330 @@
+/* COMMON */
+.fluid-layout {
+  .container {
+    max-width: 100%;
+    .lhs-section-wrapper {
+      padding-left: 0;
+    }
+  }
+}
+.overlay-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: map-get($header-height, lg);
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  z-index: 999;
+  &.active {
+    display: block;
+  }
+  @include mq-phone-only {
+    top: map-get($header-height, sm);
+  }
+}
+.fs-13 {
+  font-size: 13px;
+}
+.fw-sbold {
+  font-weight: 600;
+}
+.img-circle {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &.sm {
+    width: 35px;
+    height: 35px;
+  }
+}
+.main-wrapper {
+  padding-top: map-get($header-height, lg);
+  position: relative;
+  .mc-overlay.overlay-bg {
+    z-index: 3;
+  }
+}
+/* COMMON ENDS */
+
+.left-nav,
+.org-items {
+  .prefix-icon {
+    font-size: 20px;
+  }
+  .suffix-icon {
+    margin: 2px 0 0 5px;
+    font-size: 15px;
+  }
+}
+
+/* BACK TO BUTTON (FOR MOBILES)*/
+.back-link {
+  .icon-back-arrow-round {
+    font-size: 21px;
+    color: #666;
+    vertical-align: middle;
+  }
+  .backto-btn {
+    padding: 0;
+    display: none;
+  }
+  a {
+    font-size: 13px;
+    vertical-align: middle;
+    font-weight: 600;
+  }
+}
+
+/* TOOLTIP */
+.tooltip.show {
+  opacity: 1;
+  z-index: 1150;
+  .tooltip-inner {
+    background: #525568;
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px;
+    max-width: none;
+  }
+  .bs-tooltip-auto[x-placement^="right"] .arrow::before {
+    border-bottom-color: transparent;
+  }
+}
+.tooltip-right {
+  white-space: nowrap;
+  &.bs-tooltip-right {
+    .arrow::before {
+      border-bottom-color: transparent !important;
+      border-right-color: #525568;
+    }
+  }
+}
+.tooltip-bottom {
+  &.bs-tooltip-bottom {
+    .arrow::before {
+      border-bottom-color: #525568 !important;
+    }
+  }
+}
+.tooltip-inline .tooltip-inner {
+  white-space: nowrap;
+}
+/* TOOLTIP ENDS */
+
+// Rhs Overlay
+.rhs-activities {
+  padding-right: 48px;
+  position: relative;
+  .tabs-close {
+    background: #eff1f1;
+    padding: 18px 0;
+    text-align: center;
+    height: 57px;
+    width: 48px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #000;
+    .icon-close {
+      font-size: 10px;
+      font-weight: 600;
+    }
+  }
+  .nav {
+    .nav-item {
+      padding: 0;
+    }
+    .nav-link {
+      background: #eff1f1;
+      padding: 18px 0;
+      border-radius: 0;
+      text-align: center;
+      height: 57px;
+      border: 0;
+      &.active {
+        background: #fff;
+      }
+    }
+  }
+  .tabs-content {
+    margin-right: -48px;
+  }
+  .list-group.simple-list .list-group-item {
+    border: none;
+    margin: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid #e8e9f0;
+  }
+}
+
+/* ANIMATIONS */
+/* Pop */
+@-webkit-keyframes animation-pop {
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+@keyframes animation-pop {
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+}
+.animation-pop {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+}
+.animation-pop:hover,
+.animation-pop:focus,
+.animation-pop:active {
+  -webkit-animation-name: animation-pop;
+  animation-name: animation-pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}
+/* ANIMATIONS END */
+
+/*HELP POPOVER STYLES STARTS*/
+.helpPopover {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  .popover-header {
+    background-color: #fff;
+    border-radius: 0;
+    border-color: rgba(0, 0, 0, 0.08);
+    padding: 9px 15px;
+    font-size: 16px;
+    font-weight: normal;
+  }
+  .popover-body {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 14px;
+    letter-spacing: 0.25px;
+    line-height: 19px;
+    padding: 9px 15px 15px;
+  }
+}
+/*HELP POPOVER STYLES ENDS*/
+
+.toast-container {
+  &.toast-top-center {
+    top: 125px;
+  }
+  .customtoast {
+    background-color: #555555 !important;
+    color: #fff;
+    width: 350px;
+    margin: 0px auto;
+    position: relative;
+    padding: 10px;
+    .toast-message {
+      padding-left: 50px;
+      font-size: 13px;
+    }
+    &.toast-success {
+      &:before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 50px;
+        left: 0;
+        top: 0;
+        background-color: #282828;
+        border-left: solid 3px #47d764;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 14px;
+        border: solid #47d764;
+        border-width: 0 2px 2px 0px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        top: 12px;
+        display: block;
+        left: 22px;
+      }
+    }
+  }
+}
+
+//Notification Bar
+.notify-open {
+  .notify-banner {
+    height: $notify-banner-height;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    color: #575347;
+    font-size: 13px;
+    z-index: 10;
+    background-color: #fff6e6;
+
+    + header .navbar {
+      top: $notify-banner-height;
+    }
+    .container {
+      .btn-clear {
+        width: 70px;
+        padding-left: 10px;
+        padding-top: 8px;
+        color: #645d5c;
+        span {
+          font-size: 15px;
+          line-height: 26px;
+        }
+      }
+    }
+    .notify-icon {
+      width: 26px;
+      background-color: #cc8500;
+      color: #fff;
+    }
+    .fa-exclamation-circle {
+      font-size: 15px;
+    }
+    .notify-content {
+      padding-left: 10px;
+    }
+    @media (min-width: 1025px) {
+      border-bottom: 1px solid #ebe2d3;
+    }
+  }
+
+  .main-wrapper {
+    padding-top: $notify-banner-height + map-get($header-height, lg);
+  }
+}
+
+.secondary-header-active{
+  .layout-wrapper {
+    padding-top: 68px !important;
+  }
+}
+
+//drag placeholder css
+.drag-placeholder {
+  background: #fff;
+  border: 2px dashed #ccc;
+  min-height: 200px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

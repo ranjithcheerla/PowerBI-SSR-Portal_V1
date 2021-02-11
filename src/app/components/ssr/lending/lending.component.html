@@ -1,0 +1,168 @@
+<div class="d-flex justify-content-between">
+  <h2 class="andes fw-sbold mb-4">Lending</h2>
+  <div class="d-flex align-items-center mb-3 pb-1">
+    <button (click)="setCreateReportParam()"
+      class="btn lp-btn report-btn btn-primary btn-lg text-uppercase d-flex align-items-center"
+      routerLink="/create-report">
+      <i class="report-sprite icon-plus-white mr-2"></i> Create Report</button>
+  </div>
+</div>
+<div class="card">
+  <div class="pt-2 px-3">
+    <tabset #staticTabs class="lp-tab-container lp-hscrollable">
+      <tab heading="Dashboard">
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="mb-4 ml-4">Lending & Pipeline</h4>
+            <div id="dashboardLending" class='powerDiv'></div>
+            <a class='atext' (click)="openDashboardReport('8a08a565-cac3-47d2-bde6-97f1d203f842')"
+              style="float:right;font-weight: 700;margin-right: 21px;color:#0071bc">View
+              More..</a><br><br>
+            <app-powerbi-reports busArea="Lending & Pipeline" rptType="PowerBIReport"></app-powerbi-reports>
+          </div>
+          <div class="col-md-6">
+            <h4 class="mb-4 ml-4">Portfolio</h4>
+            <div id="dashboardPortfolio" class='powerDiv'></div>
+            <a class='atext' (click)="openDashboardReport('997cc443-bb76-4815-af4c-267762b2b3db')"
+              style="float:right;font-weight: 700;margin-right: 21px;color:#0071bc">View
+              More..</a><br><br>
+            <app-powerbi-reports busArea="Portfolio" rptType="PowerBIReport"></app-powerbi-reports>
+          </div>
+        </div>
+      </tab>
+      <tab heading="Reports">
+        <app-powerbi-reports busArea="Lending & Pipeline" rptType="PowerBIReport"></app-powerbi-reports>
+      </tab>
+      <tab heading="Widgets" (selectTab)="onSelectTab($event)">
+        <div class="row flexbox-container">
+          <div class="col-md-3">
+            <div class="widget-card" id="lenProgWidget">
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="widget-card" id="qtrDelivWidget">
+
+            </div>
+            <div class="widget-card mt-3" id="pipelinePrepWidget">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="widget-card" id="lenOutliersWidget">
+
+            </div>
+          </div>
+        </div>
+      </tab>
+      <!-- <tab heading="Analyze in Excel">
+      <app-excel-reports busArea="Lending"></app-excel-reports>
+    </tab> -->
+    </tabset>
+  </div>
+
+  <!-- Vertical Tab -->
+  <!-- <div class="spi-tab-container spi-vertical-tab" [ngClass]="{ 'vertical-tabopen' : navslideopen }">
+    <span class="spi-tap-open" (click)="navslideopen = !navslideopen"><i class="fas fa-chevron-right"></i></span>
+    <tabset class="spi-tabset custom-v-tab row" [vertical]="true">
+      <tab heading="Lending & Pipeline">
+        <div class="pt-2 px-3">
+           <div>
+            <ng-container [ngTemplateOutlet]="gridToolbar"></ng-container>
+          </div> 
+  <tabset #staticTabs class="lp-tab-container lp-hscrollable">
+    <tab heading="Reports">
+      <app-powerbi-reports busArea="Lending & Pipeline" rptType="PowerBIReport"></app-powerbi-reports>
+    </tab>
+    <tab heading="Paginated Reports">
+      <app-powerbi-reports busArea="Lending & Pipeline" rptType="PaginatedReport"></app-powerbi-reports>
+    </tab>
+    <tab heading="Analyze in Excel">
+      <app-excel-reports busArea="Lending"></app-excel-reports>
+    </tab>
+  </tabset>
+</div>
+</tab>
+<tab heading="Portfolio">
+  <div class="pt-2 px-3">
+    <div>
+      <ng-container [ngTemplateOutlet]="gridToolbar"></ng-container>
+    </div>
+    <tabset #staticTabs class="lp-tab-container lp-hscrollable">
+      <tab heading="Reports">
+        <app-powerbi-reports busArea="Portfolio" rptType="PowerBIReport"></app-powerbi-reports>
+      </tab>
+      <tab heading="Paginated Reports">
+        <app-powerbi-reports busArea="Portfolio" rptType="PaginatedReport"></app-powerbi-reports>
+      </tab>
+      <tab heading="Analyze in Excel">
+        <app-excel-reports busArea="Portfolio"></app-excel-reports>
+      </tab>
+    </tabset>
+  </div>
+</tab>
+<tab heading="Completion">
+  <app-portfolio></app-portfolio>
+
+</tab>
+<tab heading="Evaluation">
+  <app-portfolio></app-portfolio>
+</tab>
+<tab heading="Results">
+  <app-portfolio></app-portfolio>
+</tab>
+<tab heading="Risks">
+  <app-portfolio></app-portfolio>
+</tab>
+</tabset>
+</div>
+-->
+  <!-- Vertical Tab -->
+
+
+
+
+  <ng-template #gridToolbar>
+    <div class="d-flex justify-content-end view-toolbar">
+      <ul class="grid-toolbar d-flex align-items-center">
+        <li>
+          <input placeholder="Search..." class="gt-searchbox" type="text" [(ngModel)]="searchTerm"
+            (ngModelChange)="doserach($event)" #inpSrcKwd />
+          <a class="report-sprite icon-search-dark" href="javascript:;" tooltip="Search" (click)="inpSrcKwd.focus();"
+            placement="bottom">
+          </a>
+        </li>
+        <!-- <li>
+          <div class="list-fullscreen d-none d-lg-block d-xl-block">
+            <a href="javascript:;" class="mt-2 ml-2" *ngIf="isListFullScreen" (click)="toggleFullScreen()">
+              <i class="fas fa-compress colorblack-60" containerClass="tooltip-nowrap" tooltip="Exit Full Screen"
+                placement="bottom"></i>
+            </a>
+            <a href="javascript:;" *ngIf="!isListFullScreen" (click)="toggleFullScreen()">
+              <i class="report-sprite icon-fullscreen" tooltip="Full Screen" container="body" placement="bottom"></i>
+            </a>
+          </div>
+        </li> -->
+        <!-- <li>
+          <div class="btn-group" dropdown placement="bottom right">
+            <a href="javascript:;" class="cl-filter-dd-btn" dropdownToggle>
+              <i class="report-sprite icon-ellipsis-h" containerClass="tooltip-nowrap" tooltip="Grid Actions"
+                placement="bottom"></i>
+            </a>
+            <ul id="dropdown-animated" *dropdownMenu
+              class="dropdown-menu dropdown-menu-right board-meeting grid-dropdown" role="menu"
+              aria-labelledby="button-animated">
+              <li role="menuitem"><a class="dropdown-item" href="javascript:;"><i
+                    class="br-sprite icon-pdf-sm mr-2"></i>
+                  Export to PDF</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="javascript:;"><i
+                    class="br-sprite icon-print-sm mr-2"></i>
+                  Print</a>
+              </li>
+
+            </ul>
+          </div>
+        </li> -->
+      </ul>
+    </div>
+  </ng-template>
+</div>

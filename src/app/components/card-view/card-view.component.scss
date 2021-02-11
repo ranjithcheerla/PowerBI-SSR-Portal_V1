@@ -1,0 +1,109 @@
+::ng-deep {
+  .slick-track {
+    display: flex !important;
+    margin-left: 0;
+  }
+
+  :host ::ng-deep iframe {
+    border: none;
+  }
+
+  .visualized-card.card {
+    height: 200px;
+    max-height: 200px;
+
+  }
+
+  .slick-track {
+    .slick-slide {
+      min-width: 320px;
+      max-width: 320px;
+      padding: 0 8px;
+    }
+  }
+
+  .slick-list .slick-track {
+    .card-body {
+      box-sizing: content-box;
+      // height: 175px;
+    }
+  }
+
+  .slick-arrow {
+    background-color: #fff;
+    border: solid 1px #055999;
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px 0px rgba(134, 131, 131, 0.5);
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    opacity: 1;
+  }
+
+  .slick-prev,
+  .slick-next {
+    background: #fff !important;
+  }
+
+  .slick-prev {
+    left: -15px;
+    position: absolute;
+    z-index: 50;
+
+    &:before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border: solid #055999;
+      border-width: 0 0 2px 2px;
+      display: inline-block;
+      transform: rotate(45deg);
+      right: -1px;
+      position: relative;
+    }
+  }
+
+  .slick-next.slick-arrow {
+    right: -15px;
+
+    &:before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border: solid #055999;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      transform: rotate(-45deg);
+      left: -1px;
+      position: relative;
+    }
+  }
+
+  .slick-disabled {
+    visibility: hidden;
+  }
+
+  @media (max-width: 1199px) {
+    .slick-prev {
+      &.slick-arrow {
+        left: 0px !important;
+      }
+    }
+
+    .slick-next {
+      &.slick-arrow {
+        right: 0px !important;
+      }
+    }
+  }
+
+  @media (max-width: 575px) {
+    .slick-track {
+      .slick-slide {
+        min-width: 340px !important;
+        max-width: 340px !important;
+        padding: 0 12px;
+      }
+    }
+  }
+}

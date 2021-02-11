@@ -1,0 +1,82 @@
+@import "~framework/assets/css/sassimport.scss";
+footer {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  line-height: 16px;
+  color: #fff;
+  background-color: #29303d;
+  height: map-get($footer-height, lg);
+  a,
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+  }
+  @include mq-tablet-landscape-above {
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+  @include mq-tablet-landscape-below {
+    height: map-get($footer-height, sm);
+    .footer-row {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+  }
+  @include mq-phone-only {
+    height: map-get($footer-height, xs);
+    z-index: 0 !important;
+  }
+}
+.footer-menu {
+  li {
+    display: inline-block;
+    padding: 0 8px 0 0;
+    margin-right: 8px;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    line-height: 16px;
+    &:last-child {
+      border-right: 0;
+      padding-right: 0;
+      margin-right: 0;
+    }
+    &:first-child {
+      padding-left: 0;
+    }
+    &.f-label {
+      border-right: 0;
+      padding-right: 0;
+    }
+  }
+  @include mq-phone-only {
+    li {
+      padding: 0 8px 0 0;
+      margin-right: 6px;
+    }
+    &.contact li {
+      border-right: 0;
+      margin-bottom: 8px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ::ng-deep{
+// 	@media (max-width: 1199px){
+// 		html body{
+// 			padding-bottom: 47px;
+// 		}
+// 	}
+// 	@media (max-width: 991px){
+// 		html body{
+// 		padding-bottom: 48px;
+// 		}
+// 	}
+// }

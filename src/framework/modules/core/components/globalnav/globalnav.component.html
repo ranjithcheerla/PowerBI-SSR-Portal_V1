@@ -1,0 +1,87 @@
+<div class="launcher-overlay" *ngIf="launcher" (click)="launcher = false;enableGlobalNav(launcher)"></div>
+<div class="apps-module-nav" *ngIf="launcher && showLauncher" [@fadeInOut]>
+  <a href="javascript:;" class="d-inline-flex flex-column dot-nav-menu"
+    (click)="launcher = false; enableGlobalNav(launcher)">
+    <i class="global-hamburger" aria-hidden="true"></i>
+    <i class="global-hamburger" aria-hidden="true"></i>
+    <i class="global-hamburger" aria-hidden="true"></i>
+  </a>
+
+  <div *ngIf="!_showAllApps">
+    <div class="d-flex appstoplauncher px-4 py-3">
+      <div class="mr-2">
+        <i class="fw-sprite icon-wb" aria-hidden="true"></i>
+      </div>
+      <div>
+        <h6 class="andes mb-1"><a href="https://intranet.worldbankgroup.org/" target="_blank">World Bank Group</a></h6>
+        <div class="colorblack-60 logo-group">
+          <a href="https://intranet.worldbank.org/" target="_blank">WORLD BANK</a> . <a href="https://intranet.ifc.org/"
+            target="_blank">IFC</a> . <a href="https://worldbankgroup.sharepoint.com/sites/miganet"
+            target="_blank">MIGA</a> . <a href="https://icsid.worldbank.org/en/" target="_blank">ICSID</a>
+        </div>
+      </div>
+    </div>
+    <div class="appsmainlauncher px-4 py-4">
+      <div class="">
+        <h4 class="launcher-title colorblack">Apps</h4>
+        <div class="d-flex flex-wrap mt-4">
+          <ul class="all-apps-list px-2 row mb-3">
+            <li *ngFor="let app of favApps | slice:0:6" class="col-6 d-flex justify-content-between">
+              <a [href]="app.url" class="d-flex align-items-center flex-fill">
+                <i class="fw-sprite {{app.iconClass}} mr-2" aria-hidden="true"></i>
+                <span class="text-truncate">{{app.appName}}</span>
+              </a>
+              <div class="btn-group app-list-dd" dropdown>
+                <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                  aria-controls="dropdown-animated2">
+                  <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+                </button>
+                <ul id="dropdown-animated2" *dropdownMenu class="dropdown-menu" role="menu">
+                  <li role="menuitem"><a class="dropdown-item" target="_blank" [href]="app.url">Open in new tab</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="fw-sbold">
+          <a href="javascript:;" (click)="toggleAppsView()">All Apps <i class="fas fa-chevron-right text-xs ml-1"
+              aria-hidden="true"></i></a>
+        </div>
+
+        <app-quickview></app-quickview>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="_showAllApps" [@fadeInOut] class="pb-3 mt-2 px-4">
+    <div class="mb-3">
+      <a href="javascript:;" class="applist-back" (click)="toggleAppsView()"><i class="fas fa-arrow-left mr-2"
+          aria-hidden="true"></i>Back</a>
+      <div class="position-relative d-flex app-searchbox mt-3">
+        <i class="fas fa-search" aria-hidden="true" aria-hidden="true"></i>
+        <input type="text" placeholder="Search" #srch (input)="searchApps(srch.value)" class="form-control flex-fill">
+      </div>
+    </div>
+    <h6 class="launcher-title colorblack mb-3 pt-3">
+      Apps
+    </h6>
+    <ul class="all-apps-list">
+      <li *ngFor="let app of filteredApps" class="d-flex justify-content-between">
+        <a [href]="app.url" class="d-flex align-items-center flex-fill">
+          <i class="fw-sprite {{app.iconClass}} mr-2" aria-hidden="true"></i>
+          <span class="text-truncate">{{app.appName}}</span>
+        </a>
+        <div class="btn-group app-list-dd" dropdown>
+          <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+            aria-controls="dropdown-animated1">
+            <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+          </button>
+          <ul id="dropdown-animated1" *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem"><a class="dropdown-item" target="_blank" [href]="app.url">Open in new tab</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+</div>

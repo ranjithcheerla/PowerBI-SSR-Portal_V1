@@ -1,0 +1,32 @@
+<div class="container wrapper">
+  <div class="d-flex justify-content-center" *ngIf="error_type === 'SITE_NOT_CONFIGURED'">
+    <div class="page-notfound-wrapper">
+      <i class="fw-sprite fw-icon-page-notfound" aria-hidden="true"></i>
+      <p class="page-notfound">{{message}}</p>
+      <a href="javascript:;" *ngIf="showReload" (click)="reload()">Retry</a>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center" *ngIf="error_type === 'NO_ACCESS'">
+    <div class="access-denied">
+      <div class="img-access-denied"></div>
+      <h2 class="title">Access denied!</h2>
+      <p class="fs-13 mb-4">{{message}}</p>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center" *ngIf="error_type === 'SESSION_EXPIRY'">
+    <div class="access-denied">
+      <div class="img-access-denied"></div>
+      <h2 class="title">Session Expired!</h2>
+      <p class="fs-13 mb-4">{{message}}</p>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center" *ngIf="error_type === 'Error'">
+    <div class="access-denied">
+      <div class="img-access-denied"></div>
+      <h2 class="title">Error!</h2>
+      <p class="fs-13 mb-4">{{message}}</p>
+    </div>
+  </div>
+</div>

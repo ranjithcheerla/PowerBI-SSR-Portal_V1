@@ -1,0 +1,40 @@
+<h3 class="font-weight-normal pb-4">Choose a business line</h3>
+<div class="row mb-4 row-mx-12">
+    <div class="col-lg-3 col-md-4 col-6 mb-4" *ngFor="let data of bussinessLine let i =index;">
+        <div class="templ-card" (click)='activeBussinessLine = i; showBussionArea = true;'
+            [ngClass]="{'active':activeBussinessLine==i}">
+            <em class="ss-sprite {{data.icon}}"></em>
+            <div class="mt-2 text-md fw-sbold">{{data.title}}</div>
+            <div class="card-hover-icon">
+                <em class="fal fa-check-circle text-white icon-check-lg"></em>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="showBussionArea">
+    <h3 class="font-weight-normal pb-4">Choose a Business Area</h3>
+    <div class="row mb-4 row-mx-12">
+        <div class="col-lg-3 col-md-4 col-6 mb-4" *ngFor="let data of bussinessArea; let i =index;">
+            <div class="templ-card" (click)='activeBussinessArea = i' [ngClass]="{'active':activeBussinessArea==i}">
+                <em class="ss-sprite {{data.icon}}"></em>
+                <div class="mt-2 text-md fw-sbold">{{data.title}}</div>
+                <div class="card-hover-icon">
+                    <em class="fal fa-check-circle text-white icon-check-lg"></em>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<div class="cf-footer-btn border-top mt-4 pt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <a href="javascript:;" class="d-inline-flex text-uppercase text-sm font-weight-bold" routerLink="/home">
+            <em class="fas fa-chevron-left text-md mr-2"></em>
+            Back
+        </a>
+        <button class="btn btn-primary cf-footer-btn" routerLink="/lending-template">
+            Continue
+        </button>
+    </div>
+</div>

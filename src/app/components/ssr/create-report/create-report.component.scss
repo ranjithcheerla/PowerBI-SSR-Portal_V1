@@ -1,0 +1,159 @@
+// // Report Type
+// .report-type {
+//   border: 1px solid #EFEFEF;
+//   border-radius: 12px;
+//   background-color: #FFFFFF;
+//   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.07);
+//   min-width: 150px;
+//   max-height: 130px;
+
+//   // min-height: 150px;
+//   .report-card-body {
+//     text-align: center;
+
+//     // padding: 22px 30px;
+//     .report-name {
+//       max-width: 96px;
+//       margin: 0 auto;
+//     }
+//   }
+
+//   @media(max-width:575px) {
+//     width: 100%;
+//   }
+// }
+
+// .footerbtn {
+//   max-height: 80px;
+// }
+
+// .flip-overlay {
+//   border: 1px solid #69B532;
+//   border-radius: 12px;
+//   background-color: #F0FFE6;
+//   min-height: 100%;
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   transition: max-height 0.25s ease-in;
+
+//   .flip-content {
+//     position: absolute;
+//     top: 30%;
+//     left: 50%;
+//     width: 100%;
+
+//     .report-type-footer {
+//       background: transparent;
+//       left: -73px;
+//       position: relative;
+//       top: 45px;
+//     }
+
+//     .check-mark {
+//       position: absolute;
+//       left: -23px;
+//       top: -13px;
+//     }
+//   }
+// }
+
+// .container {
+//   min-height: 375px;
+// }
+
+// .disabled {
+//   pointer-events: none;
+//   cursor: not-allowed;
+// }
+
+// .breadcrumb-reports {
+//   ul {
+//     position: relative;
+
+//     li {
+//       padding: 0 24px;
+//       position: relative;
+
+//       a {
+//         text-decoration: underline;
+//       }
+
+//       &:after {
+//         content: "";
+//         position: absolute;
+//         top: 2px;
+//         bottom: 0px;
+//         display: inline-block;
+//         right: 0px;
+//         width: 1px;
+//         height: 20px;
+//         background-color: #D4D4D4;
+//       }
+
+//       &:last-child {
+//         &:after {
+//           display: none;
+//         }
+//       }
+
+//       &:first-child {
+//         padding-left: 0;
+//       }
+
+//       @media (max-width:575px) {
+//         padding: 0px;
+
+//       }
+//     }
+//   }
+// }
+
+
+// //Rhs section
+// .reports-help {
+//   .help-title {
+//     color: #394456;
+//     margin-bottom: 3px;
+//     font-weight: 600;
+//   }
+
+//   .help-desc {
+//     color: #4D4D4D;
+//   }
+// }
+
+// .progress-custom {
+//   min-width: 250px;
+
+//   .progress {
+//     border-radius: 2px;
+//     height: 6px;
+
+//     .progress-bar {
+//       background-color: #72b83f;
+//     }
+//   }
+
+//   .progress-value {
+//     white-space: nowrap;
+//     line-height: 10px;
+//   }
+// }
+
+// //Edit report name
+// .report-title-edit {
+//   position: relative;
+
+//   .edit-links {
+//     position: absolute;
+//     right: 15px;
+//     top: 12px;
+//     z-index: 1;
+
+//     a {
+//       line-height: 30px;
+//     }
+//   }
+// }

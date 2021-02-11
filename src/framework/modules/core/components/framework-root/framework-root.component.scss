@@ -1,0 +1,62 @@
+@import "~framework/assets/css/sassimport.scss";
+
+.content-wrapper {
+  height: 100%;
+}
+.layout-wrapper {
+  padding: 20px 15px 20px 20px;
+  word-break: break-word;
+  word-wrap: break-word;
+  min-width: 0;
+}
+.col-md-auto.lhs-section-wrapper {
+  padding-right: 0;
+}
+.hide-leftnav {
+  .lhs-section-wrapper {
+    display: none;
+  }
+}
+.secondary-header {
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
+  background-color: #F8F8F8;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  width: 100%; 
+  z-index: 5;
+  top: map-get($header-height, lg);
+  left: 0;
+}
+
+@media (max-width: $containerWidth) {
+  .col-md-auto.lhs-section-wrapper {
+    padding-left: 0;
+  }
+}
+@include mq-desktop-below {
+  .lhs-section-wrapper {
+    position: initial;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    z-index: initial;
+  }
+  .lhs-section-wrapper + .layout-wrapper {
+    margin-left: 64px;
+  }
+}
+@include mq-tablet-potrait-below {
+  .layout-wrapper,
+  .lhs-section-wrapper + .layout-wrapper {
+    margin-left: 0;
+  }
+}
+
+::ng-deep{
+  .secondary-header-active{
+    .layout-wrapper{
+      padding-top: 70px;
+    }
+  }
+}
