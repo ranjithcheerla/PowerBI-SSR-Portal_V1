@@ -70,6 +70,7 @@ export class MyFavoriteReportsComponent implements OnInit {
 
         return '<a routerLink="/embed-report"  class="text-md" (click)="selectedRptById(\'' + params.data.id + '\',\'View\')">' + params.value + '</a>'
       }, width: 500
+
     },
     // { field: 'name', headerName: 'Name', width: 200 },
     {
