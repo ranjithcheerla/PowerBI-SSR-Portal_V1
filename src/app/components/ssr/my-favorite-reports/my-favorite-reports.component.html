@@ -1,0 +1,179 @@
+<!-- <div class="px-4 pt-2" *ngIf="loaded && isProCheck">
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class="mb-4">All Reports</h4>
+      <ul class="report-list pr-2" *ngFor="let item of myReports">
+        <li *ngIf="!item.appId && item.isOwnedByMe">
+          <div class="d-flex justify-content-between">
+            <a routerLink="/embed-report" class="text-md" (click)="selectedRpt(item,'View')">{{item.name}}</a>
+            <div class="d-flex align-items-center">
+              <span *ngIf="workspace == 'myfav' && isProUser">
+                <a href="javascript:;" class="colorblack text-sm" (click)="openModal(addFavorite,item,'share')"
+                  title='Share'><i class="fas fa-share-alt mr-1"></i>Share
+                </a>&nbsp;&nbsp;&nbsp;
+               
+                <a routerLink="/embed-report" class="colorblack text-sm" (click)="selectedRpt(item,'Edit')"><i
+                    class="far fa-pencil mr-1"></i>Edit</a>&nbsp;&nbsp;&nbsp;
+
+                <a href="javascript:;" class="colorblack text-sm" (click)="openDeleteModal(deleteConfirm,item)"
+                  title='Share'><i class="far fa-trash-alt mr-1"></i>Delete</a>
+              </span>
+              <span *ngIf="workspace != 'myfav'">
+
+                <a href="javascript:;" *ngIf="item.reportType=='PowerBIReport'"
+                  (click)="openModal(addFavorite,item,'fav')" title='Add to My Reports'><i
+                    class="far fa-star colorblack-42 text-md"></i></a>
+
+              </span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<div class="d-flex justify-content-between">
+  <h3 class="andes fw-sbold mb-3 pb-1">Favorites</h3>
+  <div class="view-tool">
+    <a href="javascript:;" (click)="favmode = 'list'" class="mr-3" [ngClass]="{'active' : favmode == 'list'}"><i
+        class="fal fa-th-list"></i></a>
+    <a href="javascript:;" (click)="favmode = 'card'" [ngClass]="{'active' : favmode == 'card' }"><i
+        class="fal fa-th-large"></i></a>
+  </div>
+</div>
+<ng-container [ngSwitch]="favmode">
+  <ng-container *ngSwitchCase="'list'">
+    <ag-grid-angular style="width: 100%; height: 500px;" class="ag-theme-balham" [rowData]="myReports"
+      [columnDefs]="columnFavDefs" [defaultColDef]="defaultColDef" [sideBar]="true" [getRowHeight]="getRowHeight"
+      [headerHeight]="headerHeight" [frameworkComponents]="frameworkComponents">
+    </ag-grid-angular>
+
+  </ng-container>
+  <ng-container *ngSwitchCase="'card'">
+    <div class="d-flex flex-wrap">
+      <div class="report-card" *ngFor="let item of myReports">
+
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="fw-sbold mb-3">
+              <a routerLink="/embed-report" class="text-md" (click)="selectedRpt(item,'View')">{{item.name}}</a>
+            </h5>
+            <ul class="d-flex flex-wrap text-md mb-4 pb-3">
+              <li class="d-flex">
+                <span class="colorblack-60 mr-1">Report Type:</span>
+                <span class="fw-sbold">{{item.reportType}},</span>
+              </li>
+              <li class="d-flex">
+                <span class="colorblack-60 mr-1">Is Owned By Me:</span>
+                <span class="fw-sbold">{{item.isOwnedByMe}},</span>
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer d-flex justify-content-end">
+            <ul class="d-flex">
+              <li>
+                <a href="javascript:;" class="colorblack text-sm" (click)="openModal(addFavorite,item,'share')"
+                  title='Share'><i class="fas fa-share-alt mr-1"></i>Share
+                </a>&nbsp;&nbsp;&nbsp;
+              </li>
+              <li>
+                <a href="javacript:;"><i class="fal fa-heart"></i></a>
+              </li>
+              <li>
+                <a href="javacript:;"><i class="far fa-ellipsis-h"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
+
+<ng-template #addFavorite>
+  <div class="modal-header justify-content-between custom-header">
+    <h3 class=" font-weight-normal mb-3">{{favShareTitle}}</h3>
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group lp-form-group">
+          <label><span class="lp-required">*</span> Label</label>
+          <div class="">
+            <input type="text" [(ngModel)]="saveRptName" placeholder="Give the report name to save"
+              class="form-control lp-form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-end pt-3 mb-3">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn mr-3" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn"
+      (click)="confirm();opensuccessModal(templatesucess,templatefail)">SAVE</button>
+  </div>
+</ng-template>
+
+<ng-template #templatesucess>
+  <div class="modal-header justify-content-end custom-header">
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-check-circle success-color" aria-hidden="true"></i></div>
+      <div class="h3">Success!</div>
+      <div>Report Saved Successfully</div>
+      <div><a href="javascript:;" (click)="routeMyfav()">Click here to open the report.</a> </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #templatefail>
+  <div class="modal-header justify-content-end custom-header">
+    <a class="close-icon" (click)="modalRef.hide()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-exclamation-circle" aria-hidden="true"></i></div>
+      <div class="h3">Error !!</div>
+      <div>Issue in Saving the Report. Please contact PowerBI Admins.</div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #deleteConfirm>
+  <div class="modal-header justify-content-end custom-header">
+    <a class="close-icon" (click)="modalRef.hide();"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-exclamation-circle" aria-hidden="true"></i></div>
+      <div class="h3">Are sure you want to delete?</div>
+
+    </div>
+  </div>
+  <div class="modal-footer justify-content-end pt-3 mb-3">
+    <button type="button" class="btn btn-outline-primary btn-xs cf-btn mr-3" (click)="modalRef.hide()">CANCEL</button>
+    <button type="button" class="btn btn-primary btn-xs cf-btn"
+      (click)="confirm();openDeleteSuccessModal(deleteReport)">Confirm</button>
+  </div>
+</ng-template>
+
+<ng-template #deleteReport>
+  <div class="modal-header justify-content-end custom-header">
+    <a class="close-icon" (click)="modalRef.hide();reload()"><i class="fas fa-times text-lg"></i></a>
+  </div>
+  <div class="modal-body">
+    <div class="text-center">
+      <div class="modal-icon"><i class="fas fa-check-circle success-color" aria-hidden="true"></i></div>
+      <div class="h3">Success!</div>
+      <div>Report Deleted Successfully</div>
+
+    </div>
+  </div>
+</ng-template>
