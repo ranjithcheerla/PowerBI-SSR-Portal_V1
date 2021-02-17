@@ -67,12 +67,17 @@ export class MyFavoriteReportsComponent implements OnInit {
         //   selectedRptById(rptId, 'View');
         // });
         // return at;
-
-        return '<a routerLink="/embed-report"  class="text-md" (click)="selectedRptById(\'' + params.data.id + '\',\'View\')">' + params.value + '</a>'
+        return '<a href="/embed-report"  class="text-md" (click)="selectedRptById(\'' + params.data.id + '\',\'View\')">' + params.value + '</a>'
       }, width: 500
 
     },
     // { field: 'name', headerName: 'Name', width: 200 },
+    {
+      field: 'Business Line', headerName: 'Business Line', width: 200
+    },
+    {
+      field: 'Business Area', headerName: 'Business Area', width: 200
+    },
     {
       field: 'reportType', headerName: 'Report Type', width: 200
     },

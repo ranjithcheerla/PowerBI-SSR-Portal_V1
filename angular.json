@@ -27,7 +27,6 @@
               "src/framework/assets/scripts/adal.js"
             ],
             "styles": [
-              "node_modules/dragula/dist/dragula.css",
               "node_modules/@fortawesome/fontawesome-pro/css/all.min.css",
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss",
@@ -35,8 +34,8 @@
               "node_modules/ag-grid-community/dist/styles/ag-grid.css",
               "node_modules/ag-grid-community/dist/styles/ag-theme-balham.css",
               "src/framework/assets/css/main.scss",
-              "src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-toastr/toastr.css",
+              "src/styles.scss"
             ],
             "scripts": [
               {

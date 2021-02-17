@@ -40,7 +40,7 @@
   <div class="container wrapper">
     <tabset #staticTabs class="lp-tab-container lp-tab-white lp-hscrollable">
       <tab heading="All">
-        <div class="d-flex justify-content-between">
+        <!-- <div class="d-flex justify-content-between">
           <h3 class="andes fw-sbold mb-3 pb-1">My Reports</h3>
           <div class="view-tool">
             <a href="javascript:;" (click)="mode = 'list'" class="mr-3" [ngClass]="{'active' : mode == 'list'}"><i
@@ -96,8 +96,8 @@
               </div>
             </div>
           </ng-container>
-        </ng-container>
-
+        </ng-container> -->
+        <app-my-favorite-reports workspace="myfav"></app-my-favorite-reports>
       </tab>
       <tab heading="Favorites">
         <app-my-favorite-reports workspace="myfav"></app-my-favorite-reports>

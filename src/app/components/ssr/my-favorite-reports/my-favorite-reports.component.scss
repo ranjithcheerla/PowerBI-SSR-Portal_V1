@@ -1,0 +1,40 @@
+.report-card {    
+    width: 280;
+    max-width: 280px;
+    margin: 0 15px 15px 0;
+    .card { 
+    border: 0.5px solid rgba(0,0,0,0.08);
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.08);
+    .card-body {
+        padding: 12px 16px;
+      }
+    }
+  .card-footer {
+    background-color: #F2F2F2;
+    padding: 6px 16px;
+    border:0;
+    li {
+        margin-right: 16px;
+        a {
+            color: rgba(0,0,0,0.42);
+            font-size: 16px;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+  }
+}
+
+.view-tool{
+    a{
+        color: rgba(0,0,0,0.87);
+        &.active{
+            color: #0071BC;
+        }
+        i{
+            font-size: 15px;
+        }
+    }
+}
